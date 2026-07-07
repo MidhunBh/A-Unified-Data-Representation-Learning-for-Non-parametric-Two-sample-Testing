@@ -81,3 +81,23 @@ for n in n_list:
         
 with open("result/mmd-d_HDGM_baseline_0.00005_d2.pkl", "wb") as file:
     pickle.dump(mmd_baseline_result, file)
+
+import json, subprocess, time
+meta = {
+    "commit"  : subprocess.check_output(
+                    ["git", "rev-parse", "--short", "HEAD"],
+                    cwd=r"C:\Users\midhu\Documents\GitHub\A-Unified-Data-Representation-Learning-for-Non-parametric-Two-sample-Testing"
+                ).decode().strip(),
+    "method"  : "MMD-D",
+    "dataset" : "HDGM-D",
+    "d"       : x_in,
+    "n_list"  : n_list,
+    "N_TRAIL" : N_TRAIL,
+    "N_EPOCH" : N_EPOCH,
+    "lr_mmd"  : 0.00005,
+    "result"  : [float(np.mean(r)) for r in mmd_baseline_result],
+    "ts"      : time.strftime("%Y-%m-%d %H:%M"),
+}
+with open("result/mmd-d_HDGM_baseline_0.00005_d2.json", "w") as f:
+    json.dump(meta, f, indent=2)
+print("logged to result/mmd-d_HDGM_baseline_0.00005_d2.json")
