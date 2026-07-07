@@ -1,0 +1,22 @@
+{
+  "commit": "adb2920",
+  "method": "RL-C2ST",
+  "dataset": "HDGM-D",
+  "d": 10,
+  "level": "hard",
+  "n_train": 100,
+  "epochs": {
+    "ae": 100,
+    "c2st": 100
+  },
+  "lr": {
+    "ae": 0.002,
+    "c2st": 0.002
+  },
+  "result": {
+    "h": 0,
+    "stat": 0.0899999737739563,
+    "threshold": 0.0899999737739563
+  },
+  "ts": "2026-07-07 14:11"
+}
