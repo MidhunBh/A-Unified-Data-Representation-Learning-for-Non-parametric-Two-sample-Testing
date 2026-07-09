@@ -792,3 +792,30 @@ class Autoencoder_Img(nn.Module):
         x = self.encoder(x)
         x = self.decoder(x)
         return x
+    
+def generate_cov_matrix(n_clusters, d):
+    mu_mx = np.zeros([n_clusters, d])
+    for i in range(n_clusters):
+        mu_mx[i] = mu_mx[i] + 0.5*i
+    sigma_mx_1 = np.eye(d)
+    sigma_mx_2 = [np.eye(d), np.eye(d)]
+    sigma_mx_2[0][0, 1] = 0.5
+    sigma_mx_2[0][1, 0] = 0.5
+    sigma_mx_2[1][0, 1] = -0.5
+    sigma_mx_2[1][1, 0] = -0.5
+    return mu_mx, sigma_mx_1, sigma_mx_2
+
+def sample_hdgm_semi_t1(n_train, n_test, d=10, n_clusters=2, kk=0):
+    mu_mx, sigma_mx_1, _ = generate_cov_matrix(n_clusters, d)
+    n = n_train + n_test
+    s1 = np.zeros([n*n_clusters, d])
+    s2 = np.zeros([n*n_clusters, d])
+    np.random.seed(seed=1102*kk)
+    tr_idx = np.random.choice(n*n_clusters, n_train*n_clusters, replace=False)
+    te_idx = np.delete(np.arange(n*n_clusters), tr_idx)
+    for i in range(n_clusters):
+        np.random.seed(seed=1102*kk + i + n)
+        s1[i*n:(i+1)*n, :] = np.random.multivariate_normal(mu_mx[i], sigma_mx_1, n)
+        np.random.seed(seed=819*kk + i + n + 1)
+        s2[i*n:(i+1)*n, :] = np.random.multivariate_normal(mu_mx[i], sigma_mx_1, n)
+    return s1[tr_idx], s1[te_idx], s2[tr_idx], s2[te_idx]
