@@ -52,8 +52,7 @@ for n in n_list:
     summary_s = []
     summary_l = []
     for kk in range(N_TRAIL):
-        s1_tr, s1_te, s2_tr, s2_te = sample_hdgm_semi_t1(n_train, n_test, d=x_in, kk=kk)
-
+        s1_tr, s1_te, s2_tr, s2_te = sample_hdgm_semi_t2(n_train, n_test, d=x_in, kk=kk, level="hard")
         S = np.concatenate((s1_tr, s2_tr), axis=0)
         S = MatConvert(S, device, dtype)
 
@@ -88,6 +87,31 @@ for n in n_list:
     print("=====================================================\n\n")
     # break
 
-with open('result/c2st_HDGM_baseline_d2_t1.pkl', 'wb') as file:
-    # Use pickle.dump() to write the list to the file
+with open('result/c2st_HDGM_d2_power.pkl', 'wb') as file:    # Use pickle.dump() to write the list to the file
     pickle.dump(c2st_baseline_result_t2, file)
+
+
+import json, subprocess, time
+meta = {
+    "commit"  : subprocess.check_output(
+                    ["git", "rev-parse", "--short", "HEAD"],
+                    cwd=r"C:\Users\midhu\Documents\GitHub\A-Unified-Data-Representation-Learning-for-Non-parametric-Two-sample-Testing"
+                ).decode().strip(),
+    "method"  : "C2ST + C2ST-L",
+    "dataset" : "HDGM-D",
+    "level"   : "hard",
+    "metric"  : "test power",
+    "panel"   : "Fig 3b + Fig 4a",
+    "d"       : x_in,
+    "N"       : [8*n for n in n_list],
+    "N_TRAIL" : N_TRAIL,
+    "N_EPOCH" : N_EPOCH,
+    "result"  : [
+        {"N": 8*n, "C2ST-S": float(np.mean(s)), "C2ST-L": float(np.mean(l))}
+        for n, (s, l) in zip(n_list, c2st_baseline_result_t2)
+    ],
+    "ts"      : time.strftime("%Y-%m-%d %H:%M"),
+}
+with open("result/c2st_HDGM_d2_power.json", "w") as f:
+    json.dump(meta, f, indent=2)
+print("logged to result/c2st_HDGM_d2_power.json")
