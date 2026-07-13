@@ -27,7 +27,7 @@ dtype = torch.float
 alpha = 0.05  # test threshold
 batch_size = 1024  # batch size
 
-x_in = 10  # number of neurons in the input layer, i.e., dimension of data
+x_in = 2  # number of neurons in the input layer, i.e., dimension of data
 H = 30  # number of neurons in the hidden layer
 x_out = 30  # number of neurons in the output layer
 
@@ -41,8 +41,8 @@ N_TEST = 100  # number of test sets
 N_TEST_F = 100.0  # number of test sets (float)0
 N_PER = 100  # permutation times
 
-# n_list = [125, 250, 500, 750, 1000, 1250]
-n_list = [250, 375, 500]
+n_list = [125, 250, 500, 750, 1000, 1250]
+#n_list = [250, 375, 500]
 # n_list = [7.5, 10, 12.5]
 lr_c2st_list = [0.005, 0.002, 0.001]
 
@@ -56,7 +56,7 @@ for n in n_list:
     summary_s = []
     # summary_h = []
     for kk in range(N_TRAIL):
-        s1_tr, s1_te, s2_tr, s2_te = sample_hdgm_semi_t2(n_train, n_test, kk=kk, level="medium")
+        s1_tr, s1_te, s2_tr, s2_te = sample_hdgm_semi_t2(n_train, n_test, d=x_in, kk=kk, level="hard")
 
         S_encoder = np.concatenate((s1_tr, s1_te, s2_tr, s2_te), axis=0)
         S_encoder = MatConvert(S_encoder, device, dtype)
@@ -106,11 +106,34 @@ for n in n_list:
 
 print(c2st_semi_baseline_result_t2)
         
+with open('result/c2st_semi_HDGM_d2_power.pkl', 'wb') as file:
+    pickle.dump(c2st_semi_baseline_result_t2, file)
 
-# with open('result/c2st_HDGM_semi_1024_0.002_2000_unschedule_d10_overall_t1.pkl', 'wb') as file:
-#     # Use pickle.dump() to write the list to the file
-#     pickle.dump(c2st_semi_baseline_result_t2, file)
-
+import json, subprocess, time
+meta = {
+    "commit"  : subprocess.check_output(
+                    ["git", "rev-parse", "--short", "HEAD"],
+                    cwd=r"C:\Users\midhu\Documents\GitHub\A-Unified-Data-Representation-Learning-for-Non-parametric-Two-sample-Testing"
+                ).decode().strip(),
+    "method"  : "RL-C2ST (AE)",
+    "dataset" : "HDGM-D",
+    "level"   : "hard",
+    "metric"  : "test power",
+    "panel"   : "Fig 3b",
+    "d"       : x_in,
+    "N"       : [8*n for n in n_list],
+    "N_TRAIL" : N_TRAIL,
+    "N_EPOCH" : N_EPOCH,
+    "epochs_ae" : 2000,
+    "result"  : [
+        {"N": 8*n, "RL-C2ST-S": float(s), "RL-C2ST-L": float(l)}
+        for n, (s, l) in zip(n_list, c2st_semi_baseline_result_t2)
+    ],
+    "ts"      : time.strftime("%Y-%m-%d %H:%M"),
+}
+with open("result/c2st_semi_HDGM_d2_power.json", "w") as f:
+    json.dump(meta, f, indent=2)
+print("logged to result/c2st_semi_HDGM_d2_power.json")
 
 # print("\n\n=====================================================")
 # print("Change model to just representation learning")
