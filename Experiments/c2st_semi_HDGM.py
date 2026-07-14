@@ -27,7 +27,7 @@ dtype = torch.float
 alpha = 0.05  # test threshold
 batch_size = 1024  # batch size
 
-x_in = 2  # number of neurons in the input layer, i.e., dimension of data
+x_in = 10  # number of neurons in the input layer, i.e., dimension of data
 H = 30  # number of neurons in the hidden layer
 x_out = 30  # number of neurons in the output layer
 
@@ -106,7 +106,7 @@ for n in n_list:
 
 print(c2st_semi_baseline_result_t2)
         
-with open('result/c2st_semi_HDGM_d2_power.pkl', 'wb') as file:
+with open('result/c2st_semi_HDGM_d10_power.pkl', 'wb') as file:
     pickle.dump(c2st_semi_baseline_result_t2, file)
 
 import json, subprocess, time
@@ -119,7 +119,7 @@ meta = {
     "dataset" : "HDGM-D",
     "level"   : "hard",
     "metric"  : "test power",
-    "panel"   : "Fig 3b",
+    "panel"   : "Fig 3c",
     "d"       : x_in,
     "N"       : [8*n for n in n_list],
     "N_TRAIL" : N_TRAIL,
@@ -131,9 +131,9 @@ meta = {
     ],
     "ts"      : time.strftime("%Y-%m-%d %H:%M"),
 }
-with open("result/c2st_semi_HDGM_d2_power.json", "w") as f:
+with open("result/c2st_semi_HDGM_d10_power.json", "w") as f:
     json.dump(meta, f, indent=2)
-print("logged to result/c2st_semi_HDGM_d2_power.json")
+print("logged to result/c2st_semi_HDGM_d10_power.json")
 
 # print("\n\n=====================================================")
 # print("Change model to just representation learning")
