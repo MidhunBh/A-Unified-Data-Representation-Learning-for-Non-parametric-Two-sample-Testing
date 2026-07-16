@@ -1,0 +1,53 @@
+{
+  "commit": "38088a3",
+  "method": "RL-C2ST (AE)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 3c",
+  "d": 10,
+  "N": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "N_EPOCH": 1000,
+  "epochs_ae": 2000,
+  "result": [
+    {
+      "N": 1000,
+      "RL-C2ST-S": 0.08,
+      "RL-C2ST-L": 0.09
+    },
+    {
+      "N": 2000,
+      "RL-C2ST-S": 0.15,
+      "RL-C2ST-L": 0.22
+    },
+    {
+      "N": 4000,
+      "RL-C2ST-S": 0.44,
+      "RL-C2ST-L": 0.67
+    },
+    {
+      "N": 6000,
+      "RL-C2ST-S": 0.58,
+      "RL-C2ST-L": 0.82
+    },
+    {
+      "N": 8000,
+      "RL-C2ST-S": 0.88,
+      "RL-C2ST-L": 0.97
+    },
+    {
+      "N": 10000,
+      "RL-C2ST-S": 0.87,
+      "RL-C2ST-L": 0.95
+    }
+  ],
+  "ts": "2026-07-16 18:38"
+}
