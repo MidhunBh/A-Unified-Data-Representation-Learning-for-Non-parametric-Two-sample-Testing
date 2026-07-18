@@ -5,6 +5,7 @@ d10 = json.load(open('result/c2st_HDGM_d10_power.json'))
 semi_d2 = json.load(open('result/c2st_semi_HDGM_d2_power.json'))
 semi_d10 = json.load(open('result/c2st_semi_HDGM_d10_power.json'))
 mmd = json.load(open('result/mmd-d_HDGM_baseline_0.00005_d2.json'))
+fuse = json.load(open('result/mmdfuse_HDGM_power.json'))
 
 print('=== Fig 3b (d=2) ===')
 print('N        C2ST-S  C2ST-L  RL-S    RL-L')
@@ -21,3 +22,8 @@ print()
 print('=== Fig 4a MMD-D (d=2) ===')
 for r, n in zip(mmd['result'], [8*n for n in mmd['n_list']]):
     print(f"N={n:>6}: {r:.3f}")
+
+print()
+print('=== MMD-FUSE (note: all at fixed N=8000 equivalent) ===')
+for i, r in enumerate(fuse['result']):
+    print(f"iteration {i+1}: {r:.3f}")
