@@ -1,0 +1,19 @@
+{
+  "method": "MMD-FUSE",
+  "dataset": "HDGM-S",
+  "level": "hard",
+  "metric": "type-I error",
+  "panel": "Fig 4b",
+  "d": 10,
+  "N_TRAIL": 100,
+  "note": "n_train=n_test=500 fixed across all iterations",
+  "result": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "ts": "2026-07-18 12:27"
+}

@@ -1,0 +1,19 @@
+{
+  "method": "MMD-FUSE",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 4a",
+  "d": 10,
+  "N_TRAIL": 100,
+  "note": "n_train=n_test=500 fixed, n_list controls iterations only",
+  "result": [
+    0.06,
+    0.12,
+    0.38,
+    0.75,
+    0.91,
+    0.99
+  ],
+  "ts": "2026-07-18 12:26"
+}
