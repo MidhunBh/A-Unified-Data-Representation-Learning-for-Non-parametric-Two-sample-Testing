@@ -176,6 +176,27 @@ for n in n_list:
 with open("result/c2st_mnist_baseline_mmd.pkl", "wb") as f:
     pickle.dump(summary, f)
 
+
+import json, subprocess, time
+meta = {
+    "commit"  : subprocess.check_output(
+                    ["git", "rev-parse", "--short", "HEAD"],
+                    cwd=r"C:\Users\midhu\Documents\GitHub\A-Unified-Data-Representation-Learning-for-Non-parametric-Two-sample-Testing"
+                ).decode().strip(),
+    "method"  : "C2ST-MMD (poly kernel)",
+    "dataset" : "MNIST vs Fake MNIST",
+    "metric"  : "test power",
+    "panel"   : "Table 3",
+    "M"       : n_list,
+    "N_TRAIL" : N_TRAIL,
+    "note"    : "strips classification head, runs MMD with poly kernel on features",
+    "result"  : [float(np.mean(r)) for r in summary],
+    "ts"      : time.strftime("%Y-%m-%d %H:%M"),
+}
+with open("result/c2st_mnist_baseline.json", "w") as f:
+    json.dump(meta, f, indent=2)
+print("logged to result/c2st_mnist_baseline.json")
+
         # Run two-sample test (C2STs) on the training set
     #     h_s, _, _ = TST_C2ST_D(S, n_train, N_PER, alpha, discriminator, device, dtype)
     #     h_l, _, _ = TST_LCE_D(S, n_train, N_PER, alpha, discriminator, device, dtype)
