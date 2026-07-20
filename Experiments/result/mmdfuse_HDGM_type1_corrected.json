@@ -1,0 +1,27 @@
+{
+  "method": "MMD-FUSE",
+  "dataset": "HDGM-S",
+  "level": "hard",
+  "metric": "type-I error",
+  "panel": "Fig 4b",
+  "d": 10,
+  "N": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "note": "JAX seeding via PRNGKey \u2014 np.random.seed receives JAX array, integer conversion unpredictable. Type-I erratic, not flat near 0.05. Likely seeding artifact not true miscalibration.",
+  "result": [
+    0.07,
+    0.01,
+    0.0,
+    0.11,
+    0.1,
+    0.05
+  ],
+  "ts": "2026-07-20 09:36"
+}
