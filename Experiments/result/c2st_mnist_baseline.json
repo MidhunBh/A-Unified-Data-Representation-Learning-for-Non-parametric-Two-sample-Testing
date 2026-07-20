@@ -1,0 +1,24 @@
+{
+  "commit": "46d9544",
+  "method": "C2ST-MMD (poly kernel)",
+  "dataset": "MNIST vs Fake MNIST",
+  "metric": "test power",
+  "panel": "Table 3",
+  "M": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "N_TRAIL": 10,
+  "note": "strips classification head, runs MMD with poly kernel on features",
+  "result": [
+    0.415,
+    0.7955999999999999,
+    0.9875,
+    1.0,
+    1.0
+  ],
+  "ts": "2026-07-20 11:58"
+}

@@ -90,7 +90,7 @@ dataloader_real_all = torch.utils.data.DataLoader(
     datasets.MNIST(
         "./data/mnist",
         train=True,
-        download=True,
+        download=False,
         transform=transforms.Compose(
             [transforms.Resize(img_size), transforms.ToTensor(), transforms.Normalize([0.5], [0.5])]
         ),
