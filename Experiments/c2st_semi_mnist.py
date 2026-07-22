@@ -106,7 +106,7 @@ dataloader_real_all = torch.utils.data.DataLoader(
     datasets.MNIST(
         "./data/mnist",
         train=True,
-        download=True,
+        download=False,
         transform=transforms.Compose(
             [transforms.Resize(img_size), transforms.ToTensor(), transforms.Normalize([0.5], [0.5])]
         ),
@@ -259,3 +259,26 @@ for n in n_list:
     
 with open("result/c2st_mnist_semi_overall_s_l.pkl", "wb") as f:
     pickle.dump(summary, f)
+
+import json, subprocess, time
+meta = {
+    "commit"  : subprocess.check_output(
+                    ["git", "rev-parse", "--short", "HEAD"],
+                    cwd=r"C:\Users\midhu\Documents\GitHub\A-Unified-Data-Representation-Learning-for-Non-parametric-Two-sample-Testing"
+                ).decode().strip(),
+    "method"  : "RL-C2ST (joint AE)",
+    "dataset" : "MNIST vs Fake MNIST",
+    "metric"  : "test power",
+    "panel"   : "Fig 3a + Table 3",
+    "M"       : n_list,
+    "N_TRAIL" : 100,
+    "note"    : "joint fine-tuning — encoder not frozen, unlike HDGM version",
+    "result"  : [
+        {"M": n, "C2ST-S": float(np.mean(s)), "C2ST-L": float(np.mean(l))}
+        for n, (s, l) in zip(n_list, summary)
+    ],
+    "ts"      : time.strftime("%Y-%m-%d %H:%M"),
+}
+with open("result/c2st_semi_mnist.json", "w") as f:
+    json.dump(meta, f, indent=2)
+print("logged to result/c2st_semi_mnist.json")

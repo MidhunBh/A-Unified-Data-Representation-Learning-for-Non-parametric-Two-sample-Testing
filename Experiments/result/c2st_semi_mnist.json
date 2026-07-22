@@ -1,0 +1,44 @@
+{
+  "commit": "fb18185",
+  "method": "RL-C2ST (joint AE)",
+  "dataset": "MNIST vs Fake MNIST",
+  "metric": "test power",
+  "panel": "Fig 3a + Table 3",
+  "M": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "N_TRAIL": 100,
+  "note": "joint fine-tuning \u2014 encoder not frozen, unlike HDGM version",
+  "result": [
+    {
+      "M": 100,
+      "C2ST-S": 0.32,
+      "C2ST-L": 0.36
+    },
+    {
+      "M": 200,
+      "C2ST-S": 0.96,
+      "C2ST-L": 0.99
+    },
+    {
+      "M": 300,
+      "C2ST-S": 1.0,
+      "C2ST-L": 1.0
+    },
+    {
+      "M": 400,
+      "C2ST-S": 1.0,
+      "C2ST-L": 1.0
+    },
+    {
+      "M": 500,
+      "C2ST-S": 1.0,
+      "C2ST-L": 1.0
+    }
+  ],
+  "ts": "2026-07-20 18:23"
+}
