@@ -1,0 +1,112 @@
+import math
+import numpy as np
+import pickle
+import torch
+import matplotlib.pyplot as plt
+import tqdm
+import copy
+from utils import *
+
+# Set up device
+if torch.cuda.is_available():
+    device = torch.device("cuda:0")
+elif torch.backends.mps.is_available():
+    device = torch.device("mps")
+else:
+    device = torch.device("cpu")
+print("device:", device)
+
+# Setup seeds
+np.random.seed(1102)
+torch.manual_seed(1102)
+torch.cuda.manual_seed(1102)
+torch.backends.cudnn.deterministic = True
+
+# Setup for experiments
+dtype = torch.float
+alpha = 0.05  # test threshold
+batch_size = 1024  # batch size
+
+x_in = 2  # number of neurons in the input layer, i.e., dimension of data
+H = 30  # number of neurons in the hidden layer
+x_out = 30  # number of neurons in the output layer
+
+# learning_rate = 0.00005
+# learning_rate = 0.00001
+
+N_EPOCH = 1000  # number of training epochs
+N_TRAIL = 100  # number of trails
+N_TEST = 100  # number of test sets
+N_TEST_F = 100.0  # number of test sets (float)0
+N_PER = 100  # permutation times
+
+n_list = [125, 250, 500, 750, 1000, 1250]
+lr_c2st_list = [0.005, 0.002, 0.001]
+
+mmd_baseline_result = []
+for n in n_list:
+    n_train = n
+    n_test = n
+
+    summary = []
+    for kk in tqdm.trange(100):
+        s1_tr, s1_te, s2_tr, s2_te = sample_hdgm_semi_t1(
+            n_train, n_test, d=x_in, kk=kk)
+        
+        # Phase 1 — learn IRs on pooled unlabelled data
+        S_encoder = np.concatenate((s1_tr, s1_te, s2_tr, s2_te), axis=0)
+        S_encoder = MatConvert(S_encoder, device, dtype)
+        encoder = train_autoencoder(S_encoder, epoch=2000, x_in=x_in, H=H, x_out=x_out,
+                            batch_size=512, device=device, dtype=dtype, lr=0.002)
+        for param in encoder.parameters():
+            param.requires_grad = False
+        
+        S = np.concatenate((s1_tr, s2_tr), axis=0)
+        S = MatConvert(S, device, dtype)
+        S_ir = encoder(S)
+        model_mmd, sigma, sigma0, ep = MMD_D_fit(S_ir, x_out, H, x_out, N_EPOCH, device, dtype, lr_mmd=0.00005)
+        h, _, _ = TST_MMD_u(model_mmd(S_ir), n_train*2, N_PER, S_ir, sigma, sigma0, ep, alpha, kk * 4202)       
+        print("Training set Type-I (should be ~0.05): ", h)        
+
+        # perform test
+        H_MMD = np.zeros(N_TEST)
+        S_test = np.concatenate((s1_te, s2_te), axis=0)
+        S_test = MatConvert(S_test, device, dtype)
+        S_test_ir = encoder(S_test)
+        for k in range(N_TEST):
+            H_MMD[k], _, _ = TST_MMD_u(
+                model_mmd(S_test_ir), n_test*2, N_PER, S_test_ir, sigma, sigma0, ep, alpha, k * kk + 2024)
+
+        print("Type-I error of RL-MMD-D: ", H_MMD.sum() / N_TEST_F)
+        summary.append(H_MMD.sum() / N_TEST_F)
+
+        # h1, _, _ = TST_LCE(S_test, n_test*2, N_PER, alpha, model_C2ST_L, w_C2ST_L, b_C2ST_L)
+        # summary.append(h1)
+    mmd_baseline_result.append(summary)
+    print("Type-I error at N = ", 8*n, " : ", np.mean(summary))
+    # break       
+        
+
+with open("result/rl_mmd_d_HDGM_d2_type1.pkl", "wb") as file:
+    pickle.dump(mmd_baseline_result, file)
+
+import json, subprocess, time
+meta = {
+    "commit"  : subprocess.check_output(
+                    ["git", "rev-parse", "--short", "HEAD"],
+                    cwd=r"C:\Users\midhu\Documents\GitHub\A-Unified-Data-Representation-Learning-for-Non-parametric-Two-sample-Testing"
+                ).decode().strip(),
+    "method"  : "RL-MMD-D",
+    "dataset" : "HDGM-S",
+    "level"   : "hard",
+    "metric"  : "type-I error",
+    "panel"   : "Fig 4b",
+    "d"       : x_in,
+    "N"       : [8*n for n in n_list],
+    "N_TRAIL" : N_TRAIL,
+    "result"  : [float(np.mean(r)) for r in mmd_baseline_result],
+    "ts"      : time.strftime("%Y-%m-%d %H:%M"),
+}
+with open("result/rl_mmd_d_HDGM_d2_type1.json", "w") as f:
+    json.dump(meta, f, indent=2)
+print("logged to result/rl_mmd_d_HDGM_d2_type1.json")
