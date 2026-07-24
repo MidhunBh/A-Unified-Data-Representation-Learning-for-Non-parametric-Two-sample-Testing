@@ -1,0 +1,31 @@
+{
+  "commit": "a4a1344",
+  "method": "RL-MMD-D",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 4a",
+  "d": 2,
+  "N": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "N_EPOCH": 1000,
+  "epochs_ae": 2000,
+  "lr_mmd": 5e-05,
+  "note": "RL-TST applied to MMD-D \u2014 AE Phase 1 frozen, deep kernel Phase 2/3 on IRs. d=2 for Fig4a.",
+  "result": [
+    0.1296,
+    0.26890000000000003,
+    0.5721,
+    0.8747,
+    0.9297,
+    0.9996
+  ],
+  "ts": "2026-07-24 01:20"
+}
