@@ -1,0 +1,51 @@
+{
+  "commit": "eb43330",
+  "method": "RL-C2ST + RL-C2ST-L",
+  "dataset": "HDGM-S",
+  "level": "hard",
+  "metric": "type-I error",
+  "panel": "Fig 4b",
+  "d": 2,
+  "N": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "result": [
+    {
+      "N": 1000,
+      "RL-C2ST-S": 0.05,
+      "RL-C2ST-L": 0.05
+    },
+    {
+      "N": 2000,
+      "RL-C2ST-S": 0.03,
+      "RL-C2ST-L": 0.06
+    },
+    {
+      "N": 4000,
+      "RL-C2ST-S": 0.08,
+      "RL-C2ST-L": 0.07
+    },
+    {
+      "N": 6000,
+      "RL-C2ST-S": 0.05,
+      "RL-C2ST-L": 0.05
+    },
+    {
+      "N": 8000,
+      "RL-C2ST-S": 0.08,
+      "RL-C2ST-L": 0.05
+    },
+    {
+      "N": 10000,
+      "RL-C2ST-S": 0.06,
+      "RL-C2ST-L": 0.07
+    }
+  ],
+  "ts": "2026-07-25 22:53"
+}
