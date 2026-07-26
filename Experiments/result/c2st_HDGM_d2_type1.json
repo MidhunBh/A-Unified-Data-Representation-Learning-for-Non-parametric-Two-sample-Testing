@@ -1,0 +1,51 @@
+{
+  "method": "C2ST + C2ST-L",
+  "dataset": "HDGM-S",
+  "level": "hard",
+  "metric": "type-I error",
+  "panel": "Fig 4b",
+  "d": 2,
+  "N": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "note": "first run, before logging system. sampler was _t1.",
+  "result": [
+    {
+      "N": 1000,
+      "C2ST-S": 0.02,
+      "C2ST-L": 0.03
+    },
+    {
+      "N": 2000,
+      "C2ST-S": 0.03,
+      "C2ST-L": 0.05
+    },
+    {
+      "N": 4000,
+      "C2ST-S": 0.05,
+      "C2ST-L": 0.05
+    },
+    {
+      "N": 6000,
+      "C2ST-S": 0.01,
+      "C2ST-L": 0.04
+    },
+    {
+      "N": 8000,
+      "C2ST-S": 0.04,
+      "C2ST-L": 0.04
+    },
+    {
+      "N": 10000,
+      "C2ST-S": 0.03,
+      "C2ST-L": 0.08
+    }
+  ],
+  "ts": "2026-07-26 19:55"
+}
