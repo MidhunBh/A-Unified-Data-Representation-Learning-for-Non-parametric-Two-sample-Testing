@@ -1,0 +1,25 @@
+{
+  "commit": "d9b3e59",
+  "method": "RL-MMD-D",
+  "dataset": "MNIST vs Fake MNIST",
+  "metric": "test power",
+  "panel": "Table 3",
+  "M": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "N_TRAIL": 10,
+  "N_EPOCH": 1000,
+  "note": "AE Phase 1 on pooled images (1000 epochs), frozen encoder IRs fed into MMD_D_fit deep kernel",
+  "result": [
+    0.08,
+    0.039,
+    0.181,
+    0.756,
+    0.897
+  ],
+  "ts": "2026-07-27 23:43"
+}
