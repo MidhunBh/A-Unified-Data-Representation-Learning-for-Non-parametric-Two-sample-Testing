@@ -1,0 +1,25 @@
+{
+  "commit": "f02f674",
+  "method": "MMD-D",
+  "dataset": "MNIST vs Fake MNIST",
+  "metric": "test power",
+  "panel": "Table 3",
+  "M": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "N_TRAIL": 10,
+  "N_EPOCH": 1000,
+  "note": "conv feature extractor pretrained with cross-entropy, frozen, features fed into MMD_D_fit deep kernel",
+  "result": [
+    0.229,
+    0.236,
+    0.8030000000000002,
+    1.0,
+    1.0
+  ],
+  "ts": "2026-07-27 21:55"
+}
