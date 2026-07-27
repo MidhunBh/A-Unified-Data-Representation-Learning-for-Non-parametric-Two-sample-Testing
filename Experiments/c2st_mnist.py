@@ -159,13 +159,13 @@ for n in n_list:
         # print(new_layer)
         # break
 
-        h_d, _, _ = TST_MMD_l(discriminator(S), n_train, N_PER, alpha, kernel="poly")
+        h_d, _, _ = TST_MMD_l(discriminator(S), n_train, N_PER, alpha, kernel="linear")
 
         print("test power on training set", h_d)
 
         H_C2ST_D = np.zeros([N_TEST])
         for k in range(N_TEST):
-            H_C2ST_D[k], _, _ = TST_MMD_l(discriminator(S_test), n_train, N_PER, alpha, k, "poly")
+            H_C2ST_D[k], _, _ = TST_MMD_l(discriminator(S_test), n_train, N_PER, alpha, k, "linear")
         print(f"Test Power of C2ST-D at n = {n}: ", H_C2ST_D.sum() / N_TEST_F)
 
         summary_d.append(H_C2ST_D.sum() / N_TEST_F)
@@ -173,7 +173,7 @@ for n in n_list:
     summary.append(summary_d)
     print(f"Average Test Power of C2ST-D at n = {n}: ", np.mean(summary_d))
     
-with open("result/c2st_mnist_baseline_mmd.pkl", "wb") as f:
+with open("result/c2st_mnist_linear_power.pkl", "wb") as f:
     pickle.dump(summary, f)
 
 
@@ -183,17 +183,17 @@ meta = {
                     ["git", "rev-parse", "--short", "HEAD"],
                     cwd=r"C:\Users\midhu\Documents\GitHub\A-Unified-Data-Representation-Learning-for-Non-parametric-Two-sample-Testing"
                 ).decode().strip(),
-    "method"  : "C2ST-MMD (poly kernel)",
+    "method"  :"C2ST-L (linear kernel, stripped head)",
     "dataset" : "MNIST vs Fake MNIST",
     "metric"  : "test power",
     "panel"   : "Table 3",
     "M"       : n_list,
     "N_TRAIL" : N_TRAIL,
-    "note"    : "strips classification head, runs MMD with poly kernel on features",
+   "note"    : "strips classification head to first linear layer, runs MMD with linear kernel on features",
     "result"  : [float(np.mean(r)) for r in summary],
     "ts"      : time.strftime("%Y-%m-%d %H:%M"),
 }
-with open("result/c2st_mnist_baseline.json", "w") as f:
+with open("result/c2st_mnist_linear_power.json", "w") as f:
     json.dump(meta, f, indent=2)
 print("logged to result/c2st_mnist_baseline.json")
 
