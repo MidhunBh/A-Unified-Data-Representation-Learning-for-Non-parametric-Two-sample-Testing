@@ -1,0 +1,50 @@
+{
+  "commit": "06d5250",
+  "method": "C2ST + C2ST-L",
+  "dataset": "MNIST vs Fake MNIST",
+  "metric": "test power",
+  "panel": "Table 3",
+  "N_TRAIL": 100,
+  "N_TEST": 100,
+  "N_PER": 100,
+  "alpha": 0.05,
+  "note": "100 trials, per-trial model seeding kk*1102+819, TST_C2ST_D + TST_LCE_D statistics",
+  "result": [
+    {
+      "M": 100,
+      "C2ST-S": 0.2,
+      "C2ST-S_sd": 0.4,
+      "C2ST-L": 0.23,
+      "C2ST-L_sd": 0.4208325082500163
+    },
+    {
+      "M": 200,
+      "C2ST-S": 0.6,
+      "C2ST-S_sd": 0.4898979485566356,
+      "C2ST-L": 0.63,
+      "C2ST-L_sd": 0.48280430818293246
+    },
+    {
+      "M": 300,
+      "C2ST-S": 0.96,
+      "C2ST-S_sd": 0.19595917942265426,
+      "C2ST-L": 0.98,
+      "C2ST-L_sd": 0.13999999999999999
+    },
+    {
+      "M": 400,
+      "C2ST-S": 1.0,
+      "C2ST-S_sd": 0.0,
+      "C2ST-L": 1.0,
+      "C2ST-L_sd": 0.0
+    },
+    {
+      "M": 500,
+      "C2ST-S": 1.0,
+      "C2ST-S_sd": 0.0,
+      "C2ST-L": 1.0,
+      "C2ST-L_sd": 0.0
+    }
+  ],
+  "ts": "2026-07-31 16:27"
+}

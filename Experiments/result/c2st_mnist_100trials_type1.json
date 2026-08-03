@@ -1,0 +1,50 @@
+{
+  "commit": "06d5250",
+  "method": "C2ST + C2ST-L",
+  "dataset": "MNIST vs MNIST (real vs real, H0 true)",
+  "metric": "type-I error",
+  "panel": "Table 3 validation check \u2014 not in paper",
+  "N_TRAIL": 100,
+  "N_TEST": 100,
+  "N_PER": 100,
+  "alpha": 0.05,
+  "note": "checks whether inflated power vs paper (Table 3) is genuine or overfitting artifact. If Type-I stays near 0.05, power result is trustworthy.",
+  "result": [
+    {
+      "M": 100,
+      "C2ST-S": 0.03,
+      "C2ST-S_se": 0.017058722109231983,
+      "C2ST-L": 0.04,
+      "C2ST-L_se": 0.019595917942265426
+    },
+    {
+      "M": 200,
+      "C2ST-S": 0.01,
+      "C2ST-S_se": 0.0099498743710662,
+      "C2ST-L": 0.07,
+      "C2ST-L_se": 0.025514701644346143
+    },
+    {
+      "M": 300,
+      "C2ST-S": 0.05,
+      "C2ST-S_se": 0.021794494717703367,
+      "C2ST-L": 0.08,
+      "C2ST-L_se": 0.027129319932501072
+    },
+    {
+      "M": 400,
+      "C2ST-S": 0.07,
+      "C2ST-S_se": 0.02551470164434615,
+      "C2ST-L": 0.1,
+      "C2ST-L_se": 0.03
+    },
+    {
+      "M": 500,
+      "C2ST-S": 0.09,
+      "C2ST-S_se": 0.02861817604250837,
+      "C2ST-L": 0.08,
+      "C2ST-L_se": 0.027129319932501072
+    }
+  ],
+  "ts": "2026-07-31 22:36"
+}
