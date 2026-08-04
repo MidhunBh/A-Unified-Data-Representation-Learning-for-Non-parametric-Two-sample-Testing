@@ -1,0 +1,53 @@
+{
+  "commit": "b045b0c",
+  "method": "RL-C2ST (TabPFN v1, real-subsample context)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 3b \u2014 4th bar, corrected extraction",
+  "d": 2,
+  "N": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "context_size": 500,
+  "note": "Corrects earlier dummy-context run. Context = random 500-pt subsample of this trial's real pool (parity-labeled placeholders, capped under TabPFN v1's 1024 limit). Query = full real pool. Compare against rl_c2st_tabpfn_HDGM_d2_power.json (dummy context, negative) and c2st_semi_HDGM_d2_power.json (AE).",
+  "result": [
+    {
+      "N": 1000,
+      "RL-C2ST-S": 0.09,
+      "RL-C2ST-L": 0.14
+    },
+    {
+      "N": 2000,
+      "RL-C2ST-S": 0.19,
+      "RL-C2ST-L": 0.5
+    },
+    {
+      "N": 4000,
+      "RL-C2ST-S": 0.64,
+      "RL-C2ST-L": 0.93
+    },
+    {
+      "N": 6000,
+      "RL-C2ST-S": 0.81,
+      "RL-C2ST-L": 0.99
+    },
+    {
+      "N": 8000,
+      "RL-C2ST-S": 0.94,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "N": 10000,
+      "RL-C2ST-S": 0.99,
+      "RL-C2ST-L": 1.0
+    }
+  ],
+  "ts": "2026-08-04 15:43"
+}
