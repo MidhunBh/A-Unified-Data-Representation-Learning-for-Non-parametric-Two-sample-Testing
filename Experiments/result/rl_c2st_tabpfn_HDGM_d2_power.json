@@ -1,0 +1,52 @@
+{
+  "commit": "51b4b15",
+  "method": "RL-C2ST (TabPFN v1 encoder)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 3b \u2014 4th bar (encoder-type factor), not in paper",
+  "d": 2,
+  "N": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "note": "Phase 1 = frozen TabPFN v1 in-context transformer embeddings (512-dim, decoder-input tap, fixed dummy context, no training loop). Phase 2 = unmodified C2ST_NN_fit with x_in=512, identical to plain-baseline call. Directly comparable to c2st_HDGM_d2_power.json (no encoder) and c2st_semi_HDGM_d2_power.json (AE encoder).",
+  "result": [
+    {
+      "N": 1000,
+      "RL-C2ST-S": 0.06,
+      "RL-C2ST-L": 0.11
+    },
+    {
+      "N": 2000,
+      "RL-C2ST-S": 0.24,
+      "RL-C2ST-L": 0.39
+    },
+    {
+      "N": 4000,
+      "RL-C2ST-S": 0.63,
+      "RL-C2ST-L": 0.89
+    },
+    {
+      "N": 6000,
+      "RL-C2ST-S": 0.67,
+      "RL-C2ST-L": 0.98
+    },
+    {
+      "N": 8000,
+      "RL-C2ST-S": 0.91,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "N": 10000,
+      "RL-C2ST-S": 0.99,
+      "RL-C2ST-L": 1.0
+    }
+  ],
+  "ts": "2026-08-04 02:22"
+}
