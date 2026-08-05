@@ -1,0 +1,53 @@
+{
+  "commit": "76556e3",
+  "method": "RL-C2ST (AE Phase1 + TabPFN Phase2 discriminator)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 3b \u2014 novel Phase2 pretrained-discriminator design",
+  "d": 2,
+  "N": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "context_size": 500,
+  "note": "Phase 1 = unchanged from-scratch AE, identical to validated c2st_semi_HDGM_d2_power run. Phase 2 = TabPFN v1 used natively (real labels, stratified 500-pt context under 1024 cap, full test-split query) replacing ModelLatentF/C2ST_NN_fit. Custom TST_*_from_probs functions mirror paper Eq.1/Eq.2 exactly, adapted to consume TabPFN's precomputed probabilities.",
+  "result": [
+    {
+      "N": 1000,
+      "RL-C2ST-S": 0.1313,
+      "RL-C2ST-L": 0.1595
+    },
+    {
+      "N": 2000,
+      "RL-C2ST-S": 0.12469999999999999,
+      "RL-C2ST-L": 0.2561
+    },
+    {
+      "N": 4000,
+      "RL-C2ST-S": 0.1518,
+      "RL-C2ST-L": 0.31470000000000004
+    },
+    {
+      "N": 6000,
+      "RL-C2ST-S": 0.2585,
+      "RL-C2ST-L": 0.45760000000000006
+    },
+    {
+      "N": 8000,
+      "RL-C2ST-S": 0.24109999999999998,
+      "RL-C2ST-L": 0.465
+    },
+    {
+      "N": 10000,
+      "RL-C2ST-S": 0.3432,
+      "RL-C2ST-L": 0.635
+    }
+  ],
+  "ts": "2026-08-05 14:09"
+}
