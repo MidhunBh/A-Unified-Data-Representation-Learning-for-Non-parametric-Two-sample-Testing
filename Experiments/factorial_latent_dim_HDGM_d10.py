@@ -8,6 +8,7 @@ import subprocess
 import time
 from utils import *
 
+import os
 if torch.cuda.is_available():
     device = torch.device("cuda:0")
 else:
@@ -98,7 +99,18 @@ def run_one_condition(x_out, sampler_fn, desc):
 
 
 results = []
+already_done = set()
+if os.path.exists("result/factorial_latent_dim_HDGM_d10_N4000.json"):
+    with open("result/factorial_latent_dim_HDGM_d10_N4000.json") as f:
+        prior = json.load(f)
+    results = prior["results"]
+    already_done = set(prior["levels_completed"])
+    print(f"Resuming — already completed: {sorted(already_done)}")
+
 for x_out in x_out_list:
+    if x_out in already_done:
+        print(f"skipping x_out={x_out}, already done")
+        continue
     print(f"\n===== x_out (AE latent dim) = {x_out} =====")
 
     power_s, power_l = run_one_condition(

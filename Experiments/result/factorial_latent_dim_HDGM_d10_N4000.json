@@ -1,0 +1,66 @@
+{
+  "commit": "474c965",
+  "factor": "latent_dimension (AE x_out)",
+  "levels_planned": [
+    5,
+    10,
+    30,
+    50,
+    100
+  ],
+  "levels_completed": [
+    5,
+    10,
+    30,
+    50,
+    100
+  ],
+  "dataset": "HDGM",
+  "level": "hard",
+  "d": 10,
+  "N": 4000,
+  "N_TRAIL": 100,
+  "AE_EPOCHS": 2000,
+  "N_EPOCH": 1000,
+  "H_fixed": 30,
+  "final_dr_dim_fixed": 30,
+  "note": "Factorial study, factor 1: AE latent dimension. Fixed: frozen AE encoder, N=4000 (largest AE-vs-C2ST gap point from Fig3c), 100 trials for power and Type-I each. Classifier head width (H) and final DR dim held constant at 30 across all levels via ExtendedModelFixed, decoupling the varied factor from downstream architecture.",
+  "results": [
+    {
+      "x_out": 5,
+      "power_S": 0.14,
+      "power_L": 0.14,
+      "type1_S": 0.05,
+      "type1_L": 0.03
+    },
+    {
+      "x_out": 10,
+      "power_S": 0.45,
+      "power_L": 0.65,
+      "type1_S": 0.04,
+      "type1_L": 0.05
+    },
+    {
+      "x_out": 30,
+      "power_S": 0.44,
+      "power_L": 0.67,
+      "type1_S": 0.04,
+      "type1_L": 0.03
+    },
+    {
+      "x_out": 50,
+      "power_S": 0.24,
+      "power_L": 0.42,
+      "type1_S": 0.04,
+      "type1_L": 0.09
+    },
+    {
+      "x_out": 100,
+      "power_S": 0.29,
+      "power_L": 0.33,
+      "type1_S": 0.09,
+      "type1_L": 0.05
+    }
+  ],
+  "ts": "2026-08-07 03:57"
+}
