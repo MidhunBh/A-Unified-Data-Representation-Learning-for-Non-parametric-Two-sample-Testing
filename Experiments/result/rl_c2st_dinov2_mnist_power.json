@@ -1,0 +1,52 @@
+{
+  "commit": "13f3568",
+  "method": "RL-C2ST (frozen DINOv2 vits14 encoder, Option A)",
+  "dataset": "MNIST vs Fake MNIST",
+  "metric": "test power",
+  "panel": "Fig 3a \u2014 4th bar, pretrained-encoder Phase1",
+  "M_planned": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "M_completed": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "N_TRAIL": 10,
+  "dinov2_dim": 384,
+  "note": "Phase 1 = frozen DINOv2 vits14, self-supervised pretrained on LVD-142M, embedded ONCE for the entire pool before the trial loop. Phase 2 = unchanged C2ST_NN_fit, x_in=384. N_TRAIL=10 matches validated MNIST convention.",
+  "results": [
+    {
+      "M": 100,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "M": 200,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "M": 300,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "M": 400,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "M": 500,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    }
+  ],
+  "ts": "2026-08-10 14:43"
+}
