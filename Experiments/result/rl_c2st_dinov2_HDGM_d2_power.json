@@ -1,0 +1,62 @@
+{
+  "commit": "12c12cb",
+  "method": "RL-C2ST (frozen DINOv2 vits14, vector-reshaped-to-image encoding)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "not in paper \u2014 exploratory cross-modal encoder test",
+  "d": 2,
+  "N_planned": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_completed": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "dinov2_dim": 384,
+  "grid_side": 2,
+  "note": "HDGM vectors reshaped into a zero-padded 2x2 grid, upsampled to 224x224, repeated to 3ch, embedded via frozen DINOv2. This vector-to-image encoding is one specific, arbitrary choice \u2014 the spatial structure DINOv2 attends over is an artifact of this reshape, not real structure in the data (unlike MNIST). Phase 1 runs per-trial since HDGM is freshly generated each trial. Phase 2 unchanged C2ST_NN_fit.",
+  "results": [
+    {
+      "N": 1000,
+      "RL-C2ST-S": 0.08,
+      "RL-C2ST-L": 0.1
+    },
+    {
+      "N": 2000,
+      "RL-C2ST-S": 0.21,
+      "RL-C2ST-L": 0.39
+    },
+    {
+      "N": 4000,
+      "RL-C2ST-S": 0.42,
+      "RL-C2ST-L": 0.81
+    },
+    {
+      "N": 6000,
+      "RL-C2ST-S": 0.67,
+      "RL-C2ST-L": 0.94
+    },
+    {
+      "N": 8000,
+      "RL-C2ST-S": 0.86,
+      "RL-C2ST-L": 0.98
+    },
+    {
+      "N": 10000,
+      "RL-C2ST-S": 0.93,
+      "RL-C2ST-L": 1.0
+    }
+  ],
+  "ts": "2026-08-10 21:25"
+}
