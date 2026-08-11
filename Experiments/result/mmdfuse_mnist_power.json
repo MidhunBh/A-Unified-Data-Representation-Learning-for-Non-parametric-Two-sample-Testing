@@ -1,0 +1,46 @@
+{
+  "commit": "12f5f5f",
+  "method": "MMD-FUSE",
+  "dataset": "MNIST vs Fake MNIST",
+  "metric": "test power",
+  "panel": "Table 3 \u2014 last missing MNIST cell",
+  "M_planned": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "M_completed": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "N_TRAIL": 10,
+  "note": "Raw flattened pixels (1024-dim), no encoder \u2014 matches MMD-FUSE's no-representation-learning baseline definition (Biggs et al. 2023). Input is train+test COMBINED per class (2M real, 2M fake) \u2014 no data splitting, matching how MMD-FUSE was already run on HDGM in this project. Labeled under the same M as other MNIST methods for table alignment, though MMD-FUSE technically sees 2M per class where split-based methods use M for train + M for test.",
+  "results": [
+    {
+      "M": 100,
+      "power": 0.5
+    },
+    {
+      "M": 200,
+      "power": 0.8
+    },
+    {
+      "M": 300,
+      "power": 1.0
+    },
+    {
+      "M": 400,
+      "power": 1.0
+    },
+    {
+      "M": 500,
+      "power": 1.0
+    }
+  ],
+  "ts": "2026-08-11 13:10"
+}
