@@ -1,0 +1,24 @@
+{
+  "commit": "unknown",
+  "method": "C2ST-L (linear kernel)",
+  "dataset": "MNIST vs Fake MNIST",
+  "metric": "test power",
+  "panel": "Table 3 \u2014 paper grid rerun",
+  "M": [
+    200,
+    400,
+    600,
+    800,
+    1000
+  ],
+  "N_TRAIL": 100,
+  "note": "Rerun at paper's actual Table 3 grid [200,400,600,800,1000], vs repo default [100,200,300,400,500]. Recovered from pkl after original run's metadata-write step crashed on a git subprocess PATH issue (not a data issue).",
+  "result": [
+    0.7955999999999999,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "ts": "2026-08-18 22:15"
+}
