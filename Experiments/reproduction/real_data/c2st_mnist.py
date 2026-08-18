@@ -109,7 +109,7 @@ data_fake_all = pickle.load(open('./data/Fake_MNIST_data_EP100_N10000.pckl', 'rb
 data_fake_all = torch.from_numpy(data_fake_all).float()
 
 
-n_list = [100, 200, 300, 400, 500]
+n_list = [200, 400, 600, 800, 1000]
 # n = 500
 
 summary = []
@@ -173,7 +173,7 @@ for n in n_list:
     summary.append(summary_d)
     print(f"Average Test Power of C2ST-D at n = {n}: ", np.mean(summary_d))
     
-with open("result/c2st_mnist_linear_power.pkl", "wb") as f:
+with open("result/c2st_mnist_linear_power_papergrid.pkl", "wb") as f:
     pickle.dump(summary, f)
 
 
@@ -193,7 +193,7 @@ meta = {
     "result"  : [float(np.mean(r)) for r in summary],
     "ts"      : time.strftime("%Y-%m-%d %H:%M"),
 }
-with open("result/c2st_mnist_linear_power.json", "w") as f:
+with open("result/c2st_mnist_linear_power_papergrid.json", "w") as f:
     json.dump(meta, f, indent=2)
 print("logged to result/c2st_mnist_baseline.json")
 
