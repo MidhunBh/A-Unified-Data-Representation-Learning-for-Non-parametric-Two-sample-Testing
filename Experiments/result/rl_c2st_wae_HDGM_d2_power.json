@@ -1,0 +1,38 @@
+{
+  "commit": "unknown",
+  "method": "RL-C2ST (WAE)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 3b - 4th bar (final)",
+  "d": 2,
+  "N_planned": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_completed": [
+    1000,
+    2000
+  ],
+  "N_TRAIL": 100,
+  "lambda_mmd_final": 10.0,
+  "warmup_epochs": 1000,
+  "note": "WAE-MMD Phase 1, lambda_mmd-annealed (0 for first 1000 epochs, linear ramp to 10 over next 1000). Deterministic encoder (no reparameterization), MMD between encoded batch and fresh N(0,I) prior via existing MMDl (rbf kernel). Confirmed via diagnostic before full run: un-annealed lambda=10 collapsed reconstruction (same failure mode as VAE's unfixed KL); annealing resolved it.",
+  "result": [
+    {
+      "N": 1000,
+      "RL-C2ST-S": 0.02,
+      "RL-C2ST-L": 0.05
+    },
+    {
+      "N": 2000,
+      "RL-C2ST-S": 0.06,
+      "RL-C2ST-L": 0.03
+    }
+  ],
+  "ts": "2026-08-25 19:12"
+}
