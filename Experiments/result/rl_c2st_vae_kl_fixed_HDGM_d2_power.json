@@ -1,0 +1,62 @@
+{
+  "commit": "unknown",
+  "method": "RL-C2ST (VAE)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 3b - 4th bar",
+  "d": 2,
+  "N_planned": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_completed": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "beta_final": 1.0,
+  "warmup_epochs": 1000,
+  "note": "VAE Phase 1, KL-annealed (beta=0 for first 1000 epochs, linear ramp to 1.0 over next 1000). mu used as frozen IR for Phase 2. Standard beta=1 VAE (paper gives no value).",
+  "result": [
+    {
+      "N": 1000,
+      "RL-C2ST-S": 0.22,
+      "RL-C2ST-L": 0.39
+    },
+    {
+      "N": 2000,
+      "RL-C2ST-S": 0.52,
+      "RL-C2ST-L": 0.85
+    },
+    {
+      "N": 4000,
+      "RL-C2ST-S": 0.86,
+      "RL-C2ST-L": 0.98
+    },
+    {
+      "N": 6000,
+      "RL-C2ST-S": 0.97,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "N": 8000,
+      "RL-C2ST-S": 0.98,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "N": 10000,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    }
+  ],
+  "ts": "2026-08-25 06:10"
+}
