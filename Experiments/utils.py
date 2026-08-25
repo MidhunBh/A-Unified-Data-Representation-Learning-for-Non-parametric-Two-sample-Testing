@@ -586,9 +586,11 @@ def sample_hdgm_semi_t2(n_train, n_test, d=10, n_clusters=2, kk=0, level="hard")
     elif level == "medium":
         mu_mx_1, sigma_mx_1, sigma_mx_2 = generate_hdgm_cov_matrix(n_clusters, d, 10)
         mu_mx_2 = mu_mx_1
-    else:
+    elif level == "easy":
         mu_mx_1, sigma_mx_1, sigma_mx_2 = generate_hdgm_cov_matrix(n_clusters, d, 10)
-        mu_mx_2 = mu_mx_1 - 1.5
+        mu_mx_2 = mu_mx_1 + 5
+    else:
+        raise ValueError(f"unknown level: {level}")
     n = np.int64(n_train + n_test)
 
     s1 = np.zeros([n*n_clusters, d])
