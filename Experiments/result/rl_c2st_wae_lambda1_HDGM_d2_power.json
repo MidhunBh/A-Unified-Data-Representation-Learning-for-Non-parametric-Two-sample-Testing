@@ -1,0 +1,44 @@
+{
+  "commit": "unknown",
+  "method": "RL-C2ST (WAE, lambda_mmd=1)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 3b - 4th bar (retry)",
+  "d": 2,
+  "N_planned": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_completed": [
+    1000,
+    2000,
+    4000
+  ],
+  "N_TRAIL": 100,
+  "lambda_mmd_final": 1.0,
+  "warmup_epochs": 1000,
+  "note": "Retry of rl_c2st_wae_HDGM_d2_power.py (lambda_mmd=10), which underperformed C2ST at N=1000 and N=2000 (0.020/0.050 and 0.060/0.030 vs C2ST's 0.150/0.300 and 0.470/0.830), and got WORSE from N=1000 to N=2000 on the L statistic -- genuine signal erosion from over-regularization, not a warmup issue (reconstruction was already low, 0.0018, in the broken run). Fixed by lowering LAMBDA_TARGET from 10.0 to 1.0, confirmed via diagnostic before this run.",
+  "result": [
+    {
+      "N": 1000,
+      "RL-C2ST-S": 0.04,
+      "RL-C2ST-L": 0.05
+    },
+    {
+      "N": 2000,
+      "RL-C2ST-S": 0.07,
+      "RL-C2ST-L": 0.05
+    },
+    {
+      "N": 4000,
+      "RL-C2ST-S": 0.06,
+      "RL-C2ST-L": 0.04
+    }
+  ],
+  "ts": "2026-08-26 03:38"
+}
