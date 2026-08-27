@@ -1,0 +1,62 @@
+{
+  "commit": "unknown",
+  "method": "RL-C2ST (WAE + BatchNorm)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 3b - 4th bar (final)",
+  "d": 2,
+  "N_planned": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_completed": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "lambda_mmd_final": 1.0,
+  "warmup_epochs": 1000,
+  "note": "Two prior attempts (lambda=10, lambda=1, no BatchNorm) both showed genuine encoder collapse -- confirmed via direct full-pipeline test, not just covariance proxies, several of which gave misleading results. Fix: nn.BatchNorm1d after the encoder's final layer, prevents collapse to a degenerate solution. Verified at N=10000 (single trial, power=1.000/1.000, matching AE/C2ST) before this full run.",
+  "result": [
+    {
+      "N": 1000,
+      "RL-C2ST-S": 0.01,
+      "RL-C2ST-L": 0.09
+    },
+    {
+      "N": 2000,
+      "RL-C2ST-S": 0.14,
+      "RL-C2ST-L": 0.26
+    },
+    {
+      "N": 4000,
+      "RL-C2ST-S": 0.26,
+      "RL-C2ST-L": 0.49
+    },
+    {
+      "N": 6000,
+      "RL-C2ST-S": 0.3,
+      "RL-C2ST-L": 0.65
+    },
+    {
+      "N": 8000,
+      "RL-C2ST-S": 0.29,
+      "RL-C2ST-L": 0.78
+    },
+    {
+      "N": 10000,
+      "RL-C2ST-S": 0.6,
+      "RL-C2ST-L": 0.91
+    }
+  ],
+  "ts": "2026-08-27 16:56"
+}
