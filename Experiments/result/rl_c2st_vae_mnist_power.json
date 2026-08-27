@@ -1,0 +1,51 @@
+{
+  "commit": "unknown",
+  "method": "RL-C2ST (VAE, conv)",
+  "dataset": "MNIST vs Fake MNIST",
+  "metric": "test power",
+  "panel": "Fig 3a - VAE bar",
+  "M_planned": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "M_completed": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "N_TRAIL": 10,
+  "note": "Conv VAE (Encoder_Img/Decoder_Img backbone). Two failed diagnoses before this worked: logvar clamping (wrong variable, logvar was never exploding) -- root cause was unconstrained mu drifting unbounded during pure reconstruction training (mean(mu^2) 2.94->65.24 with zero KL gradient influence, confirmed by isolating recon-only loss). Fixed with BatchNorm1d on mu's output. Frozen after Phase1 (matching HDGM convention, not MNIST's joint fine-tuning), N_TRAIL=10 matching validated MNIST convention.",
+  "result": [
+    {
+      "M": 100,
+      "RL-C2ST-S": 0.0,
+      "RL-C2ST-L": 0.0
+    },
+    {
+      "M": 200,
+      "RL-C2ST-S": 0.5,
+      "RL-C2ST-L": 0.5
+    },
+    {
+      "M": 300,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "M": 400,
+      "RL-C2ST-S": 0.9,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "M": 500,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    }
+  ],
+  "ts": "2026-08-27 22:40"
+}
