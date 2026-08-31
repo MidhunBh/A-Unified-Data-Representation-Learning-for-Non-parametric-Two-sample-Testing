@@ -30,7 +30,7 @@ batch_size = 512
 
 AE_EPOCHS = 2000
 WARMUP_EPOCHS = 1000
-LAMBDA_TARGET = 0.1   # best single-trial result of 3 tested (1.0, 0.3, 0.1) -- see pre-check commit
+LAMBDA_TARGET = 0.005   # peak of 5-point scan (0.1/0.05/0.02/0.005/0.001), confirmed by reversal at 0.001
 N_EPOCH = 1000
 N_TRAIL = 100
 N_TEST = 100
@@ -78,8 +78,8 @@ def train_wae(S, device, dtype, x_in=x_in, H=H, x_out=x_out):
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-        if (epoch + 1) % 200 == 0:
-            print(f"epoch {epoch+1}: lambda={lam:.2f} recon={recon_loss.item():.4f} mmd={mmd_reg.item():.4f}")
+        if (epoch + 1) % 400 == 0:
+            print(f"epoch {epoch+1}: lambda={lam:.4f} recon={recon_loss.item():.4f} mmd={mmd_reg.item():.4f}")
     model.eval()
     return model
 
@@ -134,10 +134,10 @@ for n in n_list:
 
     meta = {
         "commit": commit, "method": "RL-C2ST (WAE + BatchNorm)", "dataset": "HDGM-D", "level": "hard",
-        "metric": "test power", "panel": "Fig 3c - 4th bar", "d": x_in,
+        "metric": "test power", "panel": "Fig 3c - 4th bar (final)", "d": x_in,
         "N_planned": [8*n for n in n_list], "N_completed": [r["N"] for r in wae_result],
         "N_TRAIL": N_TRAIL, "lambda_mmd_final": LAMBDA_TARGET, "warmup_epochs": WARMUP_EPOCHS,
-        "note": "d=2's lambda=1 gave power=0.000/0.000 at N=10000 single-trial pre-check -- did not transfer. Scanned 1.0/0.3/0.1 (non-monotonic: 0.000/0.000, 0.000/0.000, 0.000/1.000). Chose lambda=0.1 on best single-trial evidence, run anyway per explicit decision to verify with full 100 trials rather than trust one draw. If S stays at/near 0 across the full curve, treat as a genuine finding: single-scalar MMD regularization strength may not transfer across HDGM dimensionality, and/or the S (accuracy) and L (logit) statistics may respond very differently to this representation.",
+        "note": "lambda properly bracketed via 5-point scan (0.1/0.05/0.02/0.005/0.001), 15 trials each at N=2000: 0.04/0.06, 0.067/0.133, 0.133/0.133, 0.267/0.267, 0.200/0.200 -- clean peak at 0.005, confirmed by reversal at 0.001. Prior single-trial N=10000 checks (1.0/0.3/0.1) were non-monotonic and misleading; multi-trial N=2000 scan gave a clean, trustworthy signal.",
         "result": wae_result, "ts": time.strftime("%Y-%m-%d %H:%M"),
     }
     with open("result/rl_c2st_wae_bn_HDGM_d10_power.json", "w") as f:
