@@ -1,0 +1,52 @@
+{
+  "commit": "unknown",
+  "method": "RL-C2ST (WAE, conv)",
+  "dataset": "MNIST vs Fake MNIST",
+  "metric": "test power",
+  "panel": "Fig 3a - WAE bar",
+  "M_planned": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "M_completed": [
+    100,
+    200,
+    300,
+    400,
+    500
+  ],
+  "N_TRAIL": 10,
+  "lambda_mmd_final": 0.1,
+  "note": "Conv WAE (Encoder_Img/Decoder_Img backbone), single BatchNorm1d on encoder output (same fix pattern as WAE-d2's collapse and VAE-mnist's mu collapse). lambda=0.1, matching WAE-HDGM-d10's best-evidenced value rather than d2's lambda=1, since a single scalar clearly did not transfer across HDGM dimensionality either.",
+  "result": [
+    {
+      "M": 100,
+      "RL-C2ST-S": 0.3,
+      "RL-C2ST-L": 0.4
+    },
+    {
+      "M": 200,
+      "RL-C2ST-S": 0.9,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "M": 300,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "M": 400,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "M": 500,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    }
+  ],
+  "ts": "2026-08-31 15:03"
+}
