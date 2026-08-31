@@ -1,0 +1,44 @@
+{
+  "commit": "unknown",
+  "method": "RL-C2ST (WAE + BatchNorm)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 3c - 4th bar",
+  "d": 10,
+  "N_planned": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_completed": [
+    1000,
+    2000,
+    4000
+  ],
+  "N_TRAIL": 100,
+  "lambda_mmd_final": 0.1,
+  "warmup_epochs": 1000,
+  "note": "d=2's lambda=1 gave power=0.000/0.000 at N=10000 single-trial pre-check -- did not transfer. Scanned 1.0/0.3/0.1 (non-monotonic: 0.000/0.000, 0.000/0.000, 0.000/1.000). Chose lambda=0.1 on best single-trial evidence, run anyway per explicit decision to verify with full 100 trials rather than trust one draw. If S stays at/near 0 across the full curve, treat as a genuine finding: single-scalar MMD regularization strength may not transfer across HDGM dimensionality, and/or the S (accuracy) and L (logit) statistics may respond very differently to this representation.",
+  "result": [
+    {
+      "N": 1000,
+      "RL-C2ST-S": 0.04,
+      "RL-C2ST-L": 0.08
+    },
+    {
+      "N": 2000,
+      "RL-C2ST-S": 0.04,
+      "RL-C2ST-L": 0.06
+    },
+    {
+      "N": 4000,
+      "RL-C2ST-S": 0.25,
+      "RL-C2ST-L": 0.29
+    }
+  ],
+  "ts": "2026-08-31 17:19"
+}
