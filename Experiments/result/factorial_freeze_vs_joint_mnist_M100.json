@@ -1,0 +1,11 @@
+{
+  "factor": "supervision_signal (freeze vs joint), MNIST verification of HDGM finding",
+  "M": 100,
+  "N_TRAIL": 100,
+  "note": "Direct test of whether HDGM's freeze>joint finding transfers to MNIST. Minimal single-variable change from c2st_semi_mnist.py: model (autoencoder) parameters frozen and excluded from optimizer_D after Phase1, c_model structure (discriminator on reconstructed image) otherwise identical. Compare against saved c2st_semi_mnist.json M=100 (joint, S=0.320 L=0.360) and c2st_mnist_linear_power.json M=100 (plain C2ST, 0.415).",
+  "result": {
+    "power_S": 0.17,
+    "power_L": 0.22
+  },
+  "ts": "2026-09-01 14:07"
+}
