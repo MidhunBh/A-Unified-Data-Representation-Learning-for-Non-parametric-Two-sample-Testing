@@ -1,0 +1,37 @@
+{
+  "commit": "unknown",
+  "factor": "supervision_signal (freeze vs joint fine-tuning)",
+  "levels_planned": [
+    "freeze",
+    "joint"
+  ],
+  "levels_completed": [
+    "freeze",
+    "joint"
+  ],
+  "dataset": "HDGM",
+  "level": "hard",
+  "d": 10,
+  "N": 4000,
+  "N_TRAIL": 100,
+  "AE_EPOCHS": 2000,
+  "N_EPOCH": 1000,
+  "note": "Factorial study, factor 2: supervision signal. Fixed: N=4000 (matching factor 1's design point), d=10, hard, 100 trials for power and Type-I each. Pilot (10 trials, reduced N_TEST) showed joint fine-tuning collapses via total overfitting: train power 1.000/1.000, test power 0.000/0.000. This full run confirms at proper trial count.",
+  "results": [
+    {
+      "condition": "freeze",
+      "power_S": 0.44,
+      "power_L": 0.67,
+      "type1_S": 0.04,
+      "type1_L": 0.03
+    },
+    {
+      "condition": "joint",
+      "power_S": 0.11,
+      "power_L": 0.21,
+      "type1_S": 0.02,
+      "type1_L": 0.02
+    }
+  ],
+  "ts": "2026-09-01 01:20"
+}
