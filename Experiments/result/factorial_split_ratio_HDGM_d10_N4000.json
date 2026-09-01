@@ -1,0 +1,32 @@
+{
+  "commit": "unknown",
+  "factor": "data_splitting (train/test ratio)",
+  "levels_planned": [
+    "300_700",
+    "400_600",
+    "500_500",
+    "600_400",
+    "700_300"
+  ],
+  "levels_completed": [
+    "300_700"
+  ],
+  "dataset": "HDGM",
+  "level": "hard",
+  "d": 10,
+  "total_budget": 1000,
+  "N_TRAIL": 100,
+  "note": "Factorial study, factor 3: data splitting ratio. Total budget (n_train+n_test) fixed at 1000, matching N=4000's 50/50 point already in hand from the latent-dim study. Tests the tradeoff the paper's own introduction names: more training data helps the discriminator but shrinks the held-out test set.",
+  "results": [
+    {
+      "split": "300_700",
+      "n_train": 300,
+      "n_test": 700,
+      "power_S": 0.4,
+      "power_L": 0.66,
+      "type1_S": 0.08,
+      "type1_L": 0.03
+    }
+  ],
+  "ts": "2026-09-01 15:53"
+}
