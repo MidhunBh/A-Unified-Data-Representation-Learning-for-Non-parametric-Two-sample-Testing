@@ -1,5 +1,5 @@
 {
-  "commit": "unknown",
+  "commit": "c84a78d",
   "method": "RL-C2ST (WAE + BatchNorm)",
   "dataset": "HDGM-D",
   "level": "hard",
@@ -18,7 +18,9 @@
     1000,
     2000,
     4000,
-    6000
+    6000,
+    8000,
+    10000
   ],
   "N_TRAIL": 100,
   "lambda_mmd_final": 0.005,
@@ -44,7 +46,17 @@
       "N": 6000,
       "RL-C2ST-S": 0.32,
       "RL-C2ST-L": 0.34
+    },
+    {
+      "N": 8000,
+      "RL-C2ST-S": 0.45,
+      "RL-C2ST-L": 0.48
+    },
+    {
+      "N": 10000,
+      "RL-C2ST-S": 0.42,
+      "RL-C2ST-L": 0.6
     }
   ],
-  "ts": "2026-09-01 11:23"
+  "ts": "2026-09-02 16:38"
 }
