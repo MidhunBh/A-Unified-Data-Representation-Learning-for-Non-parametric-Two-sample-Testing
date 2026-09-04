@@ -1,0 +1,28 @@
+{
+  "method": "RL-MMD-D (lr_mmd corrected)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 4a",
+  "d": 2,
+  "N": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "lr_mmd": 5e-06,
+  "note": "lr_mmd corrected from 0.00005 to 0.000005, confirmed via multi-trial scan at N=2000 (4 points: 5e-4=0.229, 5e-5=0.269 [original], 5e-6=0.462, 5e-7=0.456 [reversal]). Run on viper GPU2.",
+  "result": [
+    0.20110000000000003,
+    0.3823,
+    0.7388000000000001,
+    0.9479,
+    0.9747,
+    0.9999000000000001
+  ],
+  "ts": "2026-09-04 08:30"
+}
