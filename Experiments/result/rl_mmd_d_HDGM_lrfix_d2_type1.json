@@ -1,0 +1,28 @@
+{
+  "method": "RL-MMD-D (lr_mmd corrected)",
+  "dataset": "HDGM-S",
+  "level": "hard",
+  "metric": "type-I error",
+  "panel": "Fig 4b",
+  "d": 2,
+  "N": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "lr_mmd": 5e-06,
+  "note": "Type-I companion to the lr_mmd=5e-6 power fix. Original lr_mmd=5e-5 version was inflated above 0.05 at every N (0.059-0.083). Checking whether the retuned rate also resolves calibration, not just power.",
+  "result": [
+    0.07709999999999999,
+    0.0526,
+    0.0473,
+    0.0553,
+    0.07690000000000001,
+    0.0604
+  ],
+  "ts": "2026-09-05 09:16"
+}
