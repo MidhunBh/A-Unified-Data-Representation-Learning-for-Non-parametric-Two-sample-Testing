@@ -1,0 +1,26 @@
+{
+  "commit": "9160b56",
+  "method": "RL-C2ST (joint AE)",
+  "dataset": "MNIST vs Fake MNIST",
+  "metric": "test power",
+  "panel": "Fig 3a + Table 3 - paper grid",
+  "M": [
+    200,
+    400
+  ],
+  "N_TRAIL": 100,
+  "note": "Rerun at paper's actual Table 3 grid [200,400,600,800,1000], was [100,200,300,400,500]. Joint fine-tuning, matches original c2st_semi_mnist.py exactly except n_list.",
+  "result": [
+    {
+      "M": 200,
+      "C2ST-S": 0.96,
+      "C2ST-L": 0.99
+    },
+    {
+      "M": 400,
+      "C2ST-S": 1.0,
+      "C2ST-L": 1.0
+    }
+  ],
+  "ts": "2026-09-07 14:39"
+}

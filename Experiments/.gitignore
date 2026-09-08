@@ -1,2 +1,6 @@
 
 data/*.pckl
+
+data/*.npy
+data/*.npz
+__pycache__/
