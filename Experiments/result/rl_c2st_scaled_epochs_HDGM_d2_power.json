@@ -1,0 +1,66 @@
+{
+  "commit": "6f4b216",
+  "method": "RL-C2ST (AE, authors' scaled-epoch formula)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 3b - fixed",
+  "d": 2,
+  "N_planned": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_completed": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "note": "Uses authors' disabled scaling formula (epoch = 400*2000/(n_train+n_test)), found commented-out in c2st_semi_HDGM.py, confirmed matching the authors' own winning SLURM runs (loss=0.0000, n125 power_S=0.32, n250 power_L=0.88). Spot-check at n=125/250 confirmed close match (n250 L=0.900 vs authors' 0.88) before this full run.",
+  "result": [
+    {
+      "N": 1000,
+      "epoch_used": 3200,
+      "RL-C2ST-S": 0.14,
+      "RL-C2ST-L": 0.29
+    },
+    {
+      "N": 2000,
+      "epoch_used": 1600,
+      "RL-C2ST-S": 0.44,
+      "RL-C2ST-L": 0.9
+    },
+    {
+      "N": 4000,
+      "epoch_used": 800,
+      "RL-C2ST-S": 0.85,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "N": 6000,
+      "epoch_used": 533,
+      "RL-C2ST-S": 0.96,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "N": 8000,
+      "epoch_used": 400,
+      "RL-C2ST-S": 0.99,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "N": 10000,
+      "epoch_used": 320,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    }
+  ],
+  "ts": "2026-09-10 07:33"
+}
