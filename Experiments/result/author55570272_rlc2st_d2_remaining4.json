@@ -1,0 +1,74 @@
+{
+  "method": "RL-C2ST (AE), historical author 55570272 reconstruction",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Fig 3b / Fig 4a diagnostic",
+  "source_slurm": "HDGM_semi_baseline55570272.out",
+  "d": 2,
+  "internal_n": [
+    500,
+    750,
+    1000,
+    1250
+  ],
+  "paper_N": [
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "N_TEST": 100,
+  "N_PER": 100,
+  "classifier_epochs": 1000,
+  "ae_epoch_formula": "int(400 * 2000 / (n_train + n_test))",
+  "ae_epochs": [
+    800,
+    533,
+    400,
+    320
+  ],
+  "batch_size": 1024,
+  "ae_lr": 0.002,
+  "c2st_lr": 0.005,
+  "encoder_frozen_phase2": false,
+  "phase2_model": "raw encoder passed directly to C2ST_NN_fit",
+  "scheduler": false,
+  "author_logged_statistic": "C2ST-L",
+  "author_target_L": {
+    "500": 1.0,
+    "750": 1.0,
+    "1000": 1.0,
+    "1250": 1.0
+  },
+  "note": "100-trial extension of the historical d=2 reconstruction associated with author SLURM job 55570272, covering the remaining four Figure 3 sample sizes. Both C2ST-S and C2ST-L are evaluated from the same fitted model to investigate the paper/log statistic-label ambiguity.",
+  "commit": "not recorded: local git CLI unavailable",
+  "result": [
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "RL-C2ST-S": 0.91,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "internal_n": 750,
+      "paper_N": 6000,
+      "RL-C2ST-S": 0.99,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "internal_n": 1000,
+      "paper_N": 8000,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    },
+    {
+      "internal_n": 1250,
+      "paper_N": 10000,
+      "RL-C2ST-S": 1.0,
+      "RL-C2ST-L": 1.0
+    }
+  ],
+  "ts": "2026-09-14 15:38"
+}
