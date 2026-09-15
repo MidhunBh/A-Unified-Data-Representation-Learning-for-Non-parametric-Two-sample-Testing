@@ -1,0 +1,70 @@
+{
+  "commit": "3ac46ed",
+  "method": "MMD-FUSE",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "panel": "Figure 4(a)",
+  "d": 2,
+  "alpha": 0.05,
+  "master_seed": 42,
+  "internal_n_planned": [
+    125,
+    250,
+    500,
+    750,
+    1000,
+    1250
+  ],
+  "paper_N_planned": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "paper_N_completed": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "N_TRAIL": 100,
+  "note": "Reconstruction of the HDGM MMD-FUSE power experiment for Figure 4(a). The released notebook power loop used the correct changing sample sizes but omitted d=2 when calling sample_hdgm_semi_t2, therefore silently using the sampler default d=10. This run explicitly sets d=2. For compatibility with the current NumPy/JAX environment, the HDGM sampler uses the outer trial index i as its integer seed (kk=i), while the original two-split JAX RNG sequence is retained and the second subkey is passed to mmdfuse. No MMD-FUSE hyperparameters are tuned.",
+  "results": [
+    {
+      "internal_n": 125,
+      "paper_N": 1000,
+      "power": 0.24
+    },
+    {
+      "internal_n": 250,
+      "paper_N": 2000,
+      "power": 0.5
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "power": 0.92
+    },
+    {
+      "internal_n": 750,
+      "paper_N": 6000,
+      "power": 1.0
+    },
+    {
+      "internal_n": 1000,
+      "paper_N": 8000,
+      "power": 1.0
+    },
+    {
+      "internal_n": 1250,
+      "paper_N": 10000,
+      "power": 1.0
+    }
+  ],
+  "ts": "2026-09-15 01:36"
+}
