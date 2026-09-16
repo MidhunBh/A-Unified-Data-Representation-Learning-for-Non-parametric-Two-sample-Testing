@@ -1,0 +1,553 @@
+{
+  "experiment": "HDGM d=2 deterministic WAE z=2 lambda diagnostic",
+  "purpose": "Calibrate the WAE-MMD regularization strength for latent_dim=2 using Phase-1 criteria before any downstream C2ST-S or C2ST-L power evaluation.",
+  "selection_rule": "Lambda must be selected from reconstruction MSE and prior IMQ-MMD only. P-vs-Q covariance gap and energy distance are descriptive diagnostics and must not be used for lambda selection.",
+  "paper_N": 2000,
+  "internal_n": 250,
+  "latent_dim": 2,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "lambda_values": [
+    0.0,
+    0.01,
+    0.03,
+    0.1,
+    0.3,
+    1.0
+  ],
+  "training": {
+    "epochs": 1600,
+    "batch_size": 1024,
+    "learning_rate": 0.002
+  },
+  "wae": {
+    "kernel": "multi-scale IMQ",
+    "prior": "N(0,I)",
+    "imq_scales": [
+      0.1,
+      0.2,
+      0.5,
+      1.0,
+      2.0,
+      5.0,
+      10.0
+    ]
+  },
+  "summary": {
+    "0.0": {
+      "reconstruction_mse": {
+        "mean": 1.839246078816359e-05,
+        "std": 8.955947456606738e-06
+      },
+      "eval_prior_imq_mmd": {
+        "mean": 4.225800673166911,
+        "std": 0.3660781691305923
+      },
+      "effective_rank": {
+        "mean": 1.6724225680033367,
+        "std": 0.17735963103014699
+      },
+      "top2_variance_fraction": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "latent_mean_norm": {
+        "mean": 14.547219276428223,
+        "std": 6.333150122518419
+      },
+      "mean_latent_variance": {
+        "mean": 26.97555923461914,
+        "std": 19.708172823983652
+      },
+      "normalized_covariance_gap": {
+        "mean": 0.08832836896181107,
+        "std": 0.04561583124973409
+      },
+      "normalized_energy_distance": {
+        "mean": 0.0010476108291186392,
+        "std": 0.0009660844092785366
+      }
+    },
+    "0.01": {
+      "reconstruction_mse": {
+        "mean": 7.148970883008587e-05,
+        "std": 4.7292857222174606e-05
+      },
+      "eval_prior_imq_mmd": {
+        "mean": -0.0005766948064168295,
+        "std": 0.0002471214482687367
+      },
+      "effective_rank": {
+        "mean": 1.999747395515442,
+        "std": 5.2670813889594536e-05
+      },
+      "top2_variance_fraction": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "latent_mean_norm": {
+        "mean": 0.028754692524671555,
+        "std": 0.007554487422024337
+      },
+      "mean_latent_variance": {
+        "mean": 1.0376191139221191,
+        "std": 0.010942837560477581
+      },
+      "normalized_covariance_gap": {
+        "mean": 0.058319353188077606,
+        "std": 0.025093963097203242
+      },
+      "normalized_energy_distance": {
+        "mean": 0.0009985451518635575,
+        "std": 0.0013196254186662079
+      }
+    },
+    "0.03": {
+      "reconstruction_mse": {
+        "mean": 9.761456324971125e-05,
+        "std": 2.4067511026933675e-05
+      },
+      "eval_prior_imq_mmd": {
+        "mean": -0.000807483990987142,
+        "std": 0.0002824537660558638
+      },
+      "effective_rank": {
+        "mean": 1.9995462894439697,
+        "std": 0.0004240085685457299
+      },
+      "top2_variance_fraction": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "latent_mean_norm": {
+        "mean": 0.019667929814507563,
+        "std": 0.010631636901996333
+      },
+      "mean_latent_variance": {
+        "mean": 1.0295825799306233,
+        "std": 0.005843131015836304
+      },
+      "normalized_covariance_gap": {
+        "mean": 0.06172883013884226,
+        "std": 0.016141877398396644
+      },
+      "normalized_energy_distance": {
+        "mean": 0.0010074330590820562,
+        "std": 0.0013149728419908342
+      }
+    },
+    "0.1": {
+      "reconstruction_mse": {
+        "mean": 0.00023153779723846432,
+        "std": 9.455192144530383e-05
+      },
+      "eval_prior_imq_mmd": {
+        "mean": -0.0004525184631347656,
+        "std": 0.00024570888294806316
+      },
+      "effective_rank": {
+        "mean": 1.999517520268758,
+        "std": 0.0003438690033982268
+      },
+      "top2_variance_fraction": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "latent_mean_norm": {
+        "mean": 0.029501398093998432,
+        "std": 0.014071615383653348
+      },
+      "mean_latent_variance": {
+        "mean": 1.0272974173227947,
+        "std": 0.004645312828087967
+      },
+      "normalized_covariance_gap": {
+        "mean": 0.06849037731687228,
+        "std": 0.015615826790048476
+      },
+      "normalized_energy_distance": {
+        "mean": 0.0010266335399743791,
+        "std": 0.0013203019891905616
+      }
+    },
+    "0.3": {
+      "reconstruction_mse": {
+        "mean": 0.00028860386555606965,
+        "std": 0.00012475228979305078
+      },
+      "eval_prior_imq_mmd": {
+        "mean": 0.00011098384857177734,
+        "std": 0.0007258146916688512
+      },
+      "effective_rank": {
+        "mean": 1.9996077219645183,
+        "std": 0.0002880138594888631
+      },
+      "top2_variance_fraction": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "latent_mean_norm": {
+        "mean": 0.036771575609842934,
+        "std": 0.0033844997269828346
+      },
+      "mean_latent_variance": {
+        "mean": 1.02111820379893,
+        "std": 0.003773832532761898
+      },
+      "normalized_covariance_gap": {
+        "mean": 0.0681802233060201,
+        "std": 0.016551926968800947
+      },
+      "normalized_energy_distance": {
+        "mean": 0.0010164889099542052,
+        "std": 0.0013307380194673352
+      }
+    },
+    "1.0": {
+      "reconstruction_mse": {
+        "mean": 0.001780242503931125,
+        "std": 0.0010282028536442447
+      },
+      "eval_prior_imq_mmd": {
+        "mean": -0.0012023448944091797,
+        "std": 0.00045770475675689334
+      },
+      "effective_rank": {
+        "mean": 1.999666452407837,
+        "std": 0.00026067527446659315
+      },
+      "top2_variance_fraction": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "latent_mean_norm": {
+        "mean": 0.017320925059417885,
+        "std": 0.003049829287654297
+      },
+      "mean_latent_variance": {
+        "mean": 1.0188242594401042,
+        "std": 0.012224157705581083
+      },
+      "normalized_covariance_gap": {
+        "mean": 0.06686117748419444,
+        "std": 0.01754176775966449
+      },
+      "normalized_energy_distance": {
+        "mean": 0.0010170573320162173,
+        "std": 0.0013510679739371127
+      }
+    }
+  },
+  "records": [
+    {
+      "seed": 0,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.0,
+      "epochs": 1600,
+      "reconstruction_mse": 2.1647872017638292e-05,
+      "training_imq_mmd": 4.458392143249512,
+      "eval_prior_imq_mmd": 4.516944408416748,
+      "effective_rank": 1.6804864406585693,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 11.64141845703125,
+      "mean_latent_variance": 12.950029373168945,
+      "normalized_covariance_gap": 0.08927197009325027,
+      "normalized_energy_distance": 0.002260590437799692
+    },
+    {
+      "seed": 0,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.01,
+      "epochs": 1600,
+      "reconstruction_mse": 0.00010424843640066683,
+      "training_imq_mmd": 0.0005782246589660645,
+      "eval_prior_imq_mmd": -0.0009062290191650391,
+      "effective_rank": 1.999794363975525,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.029156729578971863,
+      "mean_latent_variance": 1.0364620685577393,
+      "normalized_covariance_gap": 0.0292117428034544,
+      "normalized_energy_distance": 0.002833438804373145
+    },
+    {
+      "seed": 0,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.03,
+      "epochs": 1600,
+      "reconstruction_mse": 6.516830399050377e-05,
+      "training_imq_mmd": -0.0003209710121154785,
+      "eval_prior_imq_mmd": -0.0011459589004516602,
+      "effective_rank": 1.9999346733093262,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.03104989603161812,
+      "mean_latent_variance": 1.0270483493804932,
+      "normalized_covariance_gap": 0.04095663130283356,
+      "normalized_energy_distance": 0.002835807390511036
+    },
+    {
+      "seed": 0,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.1,
+      "epochs": 1600,
+      "reconstruction_mse": 0.0001114664964916301,
+      "training_imq_mmd": -0.00016075372695922852,
+      "eval_prior_imq_mmd": -0.0007215738296508789,
+      "effective_rank": 1.999979853630066,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.011373396031558514,
+      "mean_latent_variance": 1.0288147926330566,
+      "normalized_covariance_gap": 0.05040312185883522,
+      "normalized_energy_distance": 0.002863883739337325
+    },
+    {
+      "seed": 0,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.3,
+      "epochs": 1600,
+      "reconstruction_mse": 0.000244093025685288,
+      "training_imq_mmd": -0.0007905960083007812,
+      "eval_prior_imq_mmd": 0.000789642333984375,
+      "effective_rank": 1.9999783039093018,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.036032821983098984,
+      "mean_latent_variance": 1.0264475345611572,
+      "normalized_covariance_gap": 0.05325503647327423,
+      "normalized_energy_distance": 0.0028670469764620066
+    },
+    {
+      "seed": 0,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 1.0,
+      "epochs": 1600,
+      "reconstruction_mse": 0.0005390405422076583,
+      "training_imq_mmd": -0.000986933708190918,
+      "eval_prior_imq_mmd": -0.0006316900253295898,
+      "effective_rank": 1.9999572038650513,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.01758711226284504,
+      "mean_latent_variance": 1.0334542989730835,
+      "normalized_covariance_gap": 0.055323246866464615,
+      "normalized_energy_distance": 0.002896486083045602
+    },
+    {
+      "seed": 1,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.0,
+      "epochs": 1600,
+      "reconstruction_mse": 6.164509159134468e-06,
+      "training_imq_mmd": 3.774778723716736,
+      "eval_prior_imq_mmd": 3.70949125289917,
+      "effective_rank": 1.8854986429214478,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 8.66319751739502,
+      "mean_latent_variance": 13.129716873168945,
+      "normalized_covariance_gap": 0.031994789838790894,
+      "normalized_energy_distance": -0.00010338699212297797
+    },
+    {
+      "seed": 1,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.01,
+      "epochs": 1600,
+      "reconstruction_mse": 4.6121189143377705e-06,
+      "training_imq_mmd": 0.0011304020881652832,
+      "eval_prior_imq_mmd": -0.0005127191543579102,
+      "effective_rank": 1.9997739791870117,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.019307907670736313,
+      "mean_latent_variance": 1.0248329639434814,
+      "normalized_covariance_gap": 0.05529132857918739,
+      "normalized_energy_distance": -0.00021384375577326864
+    },
+    {
+      "seed": 1,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.03,
+      "epochs": 1600,
+      "reconstruction_mse": 0.00012274262553546578,
+      "training_imq_mmd": 0.0005860328674316406,
+      "eval_prior_imq_mmd": -0.0004545450210571289,
+      "effective_rank": 1.9989564418792725,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.022484924644231796,
+      "mean_latent_variance": 1.0240381956100464,
+      "normalized_covariance_gap": 0.06391571462154388,
+      "normalized_energy_distance": -0.0002008898591157049
+    },
+    {
+      "seed": 1,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.1,
+      "epochs": 1600,
+      "reconstruction_mse": 0.00034253677586093545,
+      "training_imq_mmd": 0.0003559589385986328,
+      "eval_prior_imq_mmd": -0.000508427619934082,
+      "effective_rank": 1.9994169473648071,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.04567505419254303,
+      "mean_latent_variance": 1.021003246307373,
+      "normalized_covariance_gap": 0.06656042486429214,
+      "normalized_energy_distance": -0.0001804006315069273
+    },
+    {
+      "seed": 1,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.3,
+      "epochs": 1600,
+      "reconstruction_mse": 0.0001630121023481479,
+      "training_imq_mmd": 0.0005298256874084473,
+      "eval_prior_imq_mmd": -0.0008952617645263672,
+      "effective_rank": 1.9995688199996948,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.03304547443985939,
+      "mean_latent_variance": 1.0187013149261475,
+      "normalized_covariance_gap": 0.06002620607614517,
+      "normalized_energy_distance": -0.00020522164413705468
+    },
+    {
+      "seed": 1,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 1.0,
+      "epochs": 1600,
+      "reconstruction_mse": 0.0030568655347451568,
+      "training_imq_mmd": 0.0019504427909851074,
+      "eval_prior_imq_mmd": -0.0012230873107910156,
+      "effective_rank": 1.999717354774475,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.013459688983857632,
+      "mean_latent_variance": 1.0194852352142334,
+      "normalized_covariance_gap": 0.05361100658774376,
+      "normalized_energy_distance": -0.0002207974175689742
+    },
+    {
+      "seed": 2,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.0,
+      "epochs": 1600,
+      "reconstruction_mse": 2.7365001187718008e-05,
+      "training_imq_mmd": 4.448625087738037,
+      "eval_prior_imq_mmd": 4.4509663581848145,
+      "effective_rank": 1.4512826204299927,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 23.3370418548584,
+      "mean_latent_variance": 54.84693145751953,
+      "normalized_covariance_gap": 0.14371834695339203,
+      "normalized_energy_distance": 0.0009856290416792035
+    },
+    {
+      "seed": 2,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.01,
+      "epochs": 1600,
+      "reconstruction_mse": 0.00010560857117525302,
+      "training_imq_mmd": 0.0030835866928100586,
+      "eval_prior_imq_mmd": -0.00031113624572753906,
+      "effective_rank": 1.999673843383789,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.03779944032430649,
+      "mean_latent_variance": 1.0515623092651367,
+      "normalized_covariance_gap": 0.09045498818159103,
+      "normalized_energy_distance": 0.00037604040699079633
+    },
+    {
+      "seed": 2,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.03,
+      "epochs": 1600,
+      "reconstruction_mse": 0.00010493276022316422,
+      "training_imq_mmd": 0.001207888126373291,
+      "eval_prior_imq_mmd": -0.0008219480514526367,
+      "effective_rank": 1.9997477531433105,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.005468968767672777,
+      "mean_latent_variance": 1.0376611948013306,
+      "normalized_covariance_gap": 0.08031414449214935,
+      "normalized_energy_distance": 0.00038738164585083723
+    },
+    {
+      "seed": 2,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.1,
+      "epochs": 1600,
+      "reconstruction_mse": 0.0002406101193628274,
+      "training_imq_mmd": 0.0023869872093200684,
+      "eval_prior_imq_mmd": -0.00012755393981933594,
+      "effective_rank": 1.9991557598114014,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.03145574405789375,
+      "mean_latent_variance": 1.032074213027954,
+      "normalized_covariance_gap": 0.08850758522748947,
+      "normalized_energy_distance": 0.00039641751209273934
+    },
+    {
+      "seed": 2,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 0.3,
+      "epochs": 1600,
+      "reconstruction_mse": 0.00045870646863477305,
+      "training_imq_mmd": 0.005528092384338379,
+      "eval_prior_imq_mmd": 0.0004385709762573242,
+      "effective_rank": 1.999276041984558,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.041236430406570435,
+      "mean_latent_variance": 1.0182057619094849,
+      "normalized_covariance_gap": 0.0912594273686409,
+      "normalized_energy_distance": 0.0003876413975376636
+    },
+    {
+      "seed": 2,
+      "paper_N": 2000,
+      "internal_n": 250,
+      "latent_dim": 2,
+      "lambda_mmd": 1.0,
+      "epochs": 1600,
+      "reconstruction_mse": 0.00174482143484056,
+      "training_imq_mmd": 0.006572425365447998,
+      "eval_prior_imq_mmd": -0.0017522573471069336,
+      "effective_rank": 1.9993247985839844,
+      "top2_variance_fraction": 1.0,
+      "latent_mean_norm": 0.02091597393155098,
+      "mean_latent_variance": 1.0035332441329956,
+      "normalized_covariance_gap": 0.09164927899837494,
+      "normalized_energy_distance": 0.000375483330572024
+    }
+  ]
+}

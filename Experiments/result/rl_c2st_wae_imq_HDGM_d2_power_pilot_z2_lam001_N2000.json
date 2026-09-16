@@ -1,0 +1,193 @@
+{
+  "commit": "80b8a42",
+  "method": "RL-C2ST (WAE-MMD/IMQ)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "target_panel": "Figure 3(b)",
+  "d": 2,
+  "representation": {
+    "type": "WAE-MMD",
+    "encoder": "architecture matched to released Tian AE",
+    "prior": "N(0,I)",
+    "kernel": "multi-scale IMQ",
+    "imq_scales": [
+      0.1,
+      0.2,
+      0.5,
+      1.0,
+      2.0,
+      5.0,
+      10.0
+    ],
+    "C_base": 4,
+    "lambda_mmd": 0.01,
+    "lambda_provenance": "For this pilot lambda=0.01 was selected from the z=2 Phase-1 reconstruction/prior-MMD diagnostic before downstream power. Tian's exact WAE lambda is not available.",
+    "reconstruction_loss": "PyTorch MSELoss",
+    "learning_rate": 0.002,
+    "batch_size": 1024,
+    "epoch_schedule": "int(400*2000/(n_train+n_test))",
+    "batchnorm": false,
+    "warmup": false
+  },
+  "phase2": {
+    "model": "raw WAE encoder passed directly to C2ST_NN_fit",
+    "encoder_frozen": false,
+    "epochs": 1000,
+    "batch_size": 1024,
+    "learning_rate": 0.005
+  },
+  "testing": {
+    "alpha": 0.05,
+    "N_TEST": 100,
+    "N_PER": 100,
+    "statistics": [
+      "C2ST-S",
+      "C2ST-L"
+    ]
+  },
+  "outer_trials": {
+    "requested_start": 0,
+    "requested_end": 10,
+    "shard_id": "pilot_z2_lam001_N2000"
+  },
+  "internal_n_planned": [
+    250
+  ],
+  "paper_N_planned": [
+    2000
+  ],
+  "note": "Reconstructed WAE branch because Tian et al. did not release WAE source code or WAE logs. The WAE formulation follows Tolstikhin et al.'s WAE-MMD construction with a standard Gaussian prior and multi-scale IMQ kernel. The surrounding HDGM d=2 RL-C2ST training recipe is matched to the recovered historical author configuration: adaptive representation-training epochs, batch size 1024, raw encoder passed into phase 2, encoder unfrozen, and C2ST LR=0.005. This script intentionally does not use the repo's MMDl RBF helper because its separately estimated XX/YY/XY bandwidths do not define a single common RBF kernel suitable for WAE prior matching.",
+  "summary": [
+    {
+      "internal_n": 250,
+      "paper_N": 2000,
+      "n_outer_trials": 10,
+      "RL-C2ST-S": 0.4,
+      "RL-C2ST-L": 0.5
+    }
+  ],
+  "trial_records": [
+    {
+      "internal_n": 250,
+      "paper_N": 2000,
+      "outer_trial": 0,
+      "wae_epochs": 1600,
+      "final_reconstruction_loss": 0.00010625971845001914,
+      "final_imq_mmd": -0.002155780792236328,
+      "final_wae_loss": 8.470191096421331e-05,
+      "trial_power_s": 1.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 40.97424936294556
+    },
+    {
+      "internal_n": 250,
+      "paper_N": 2000,
+      "outer_trial": 1,
+      "wae_epochs": 1600,
+      "final_reconstruction_loss": 0.00016320977010764182,
+      "final_imq_mmd": 0.0012916326522827148,
+      "final_wae_loss": 0.00017612609372008592,
+      "trial_power_s": 0.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 39.000009536743164
+    },
+    {
+      "internal_n": 250,
+      "paper_N": 2000,
+      "outer_trial": 2,
+      "wae_epochs": 1600,
+      "final_reconstruction_loss": 0.00016206448344746605,
+      "final_imq_mmd": 0.002113044261932373,
+      "final_wae_loss": 0.00018319492664886639,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 39.86265325546265
+    },
+    {
+      "internal_n": 250,
+      "paper_N": 2000,
+      "outer_trial": 3,
+      "wae_epochs": 1600,
+      "final_reconstruction_loss": 6.244024007173721e-05,
+      "final_imq_mmd": -0.00021964311599731445,
+      "final_wae_loss": 6.0243810366955586e-05,
+      "trial_power_s": 0.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 39.65521025657654
+    },
+    {
+      "internal_n": 250,
+      "paper_N": 2000,
+      "outer_trial": 4,
+      "wae_epochs": 1600,
+      "final_reconstruction_loss": 6.168570871523116e-05,
+      "final_imq_mmd": -9.697675704956055e-05,
+      "final_wae_loss": 6.071594179957174e-05,
+      "trial_power_s": 1.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 40.69991087913513
+    },
+    {
+      "internal_n": 250,
+      "paper_N": 2000,
+      "outer_trial": 5,
+      "wae_epochs": 1600,
+      "final_reconstruction_loss": 0.00018637141329236329,
+      "final_imq_mmd": 0.004266917705535889,
+      "final_wae_loss": 0.00022904059733264148,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 39.22360849380493
+    },
+    {
+      "internal_n": 250,
+      "paper_N": 2000,
+      "outer_trial": 6,
+      "wae_epochs": 1600,
+      "final_reconstruction_loss": 0.00011278897363808937,
+      "final_imq_mmd": 0.004506468772888184,
+      "final_wae_loss": 0.00015785365394549444,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 40.33256912231445
+    },
+    {
+      "internal_n": 250,
+      "paper_N": 2000,
+      "outer_trial": 7,
+      "wae_epochs": 1600,
+      "final_reconstruction_loss": 8.068637907854281e-05,
+      "final_imq_mmd": 0.0010287165641784668,
+      "final_wae_loss": 9.097354632103816e-05,
+      "trial_power_s": 1.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 40.016066789627075
+    },
+    {
+      "internal_n": 250,
+      "paper_N": 2000,
+      "outer_trial": 8,
+      "wae_epochs": 1600,
+      "final_reconstruction_loss": 3.481045496300794e-05,
+      "final_imq_mmd": 0.004094958305358887,
+      "final_wae_loss": 7.576003918075003e-05,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 38.768218994140625
+    },
+    {
+      "internal_n": 250,
+      "paper_N": 2000,
+      "outer_trial": 9,
+      "wae_epochs": 1600,
+      "final_reconstruction_loss": 0.00012663237430388108,
+      "final_imq_mmd": -6.270408630371094e-05,
+      "final_wae_loss": 0.00012600533227669075,
+      "trial_power_s": 1.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 39.13903546333313
+    }
+  ],
+  "ts": "2026-09-16 13:09:48"
+}
