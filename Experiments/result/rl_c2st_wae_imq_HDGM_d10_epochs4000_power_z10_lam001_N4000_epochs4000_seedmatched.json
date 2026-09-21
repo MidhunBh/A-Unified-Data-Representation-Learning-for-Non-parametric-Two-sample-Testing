@@ -1,0 +1,433 @@
+{
+  "commit": "993cd0f",
+  "method": "RL-C2ST (WAE-MMD/IMQ)",
+  "dataset": "HDGM-D",
+  "level": "hard",
+  "metric": "test power",
+  "target_panel": "Figure 3(c)",
+  "d": 10,
+  "representation": {
+    "type": "WAE-MMD",
+    "encoder": "architecture matched to released Tian AE",
+    "prior": "N(0,I)",
+    "kernel": "multi-scale IMQ",
+    "imq_scales": [
+      0.1,
+      0.2,
+      0.5,
+      1.0,
+      2.0,
+      5.0,
+      10.0
+    ],
+    "C_base": 20,
+    "lambda_mmd": 0.01,
+    "lambda_provenance": "lambda=0.01 was selected using Phase-1 diagnostics and transferred to z=10 without using d=10 downstream test power. Tian's exact WAE lambda is not available.",
+    "reconstruction_loss": "PyTorch MSELoss",
+    "learning_rate": 0.002,
+    "batch_size": 1024,
+    "epoch_schedule": "int(400*2000/(n_train+n_test))",
+    "batchnorm": false,
+    "warmup": false
+  },
+  "phase2": {
+    "model": "frozen z=10 WAE encoder followed by trainable 10->30->30->30 nonlinear C2ST feature head",
+    "encoder_frozen": true,
+    "epochs": 1000,
+    "batch_size": 1024,
+    "learning_rate": 0.005
+  },
+  "testing": {
+    "alpha": 0.05,
+    "N_TEST": 100,
+    "N_PER": 100,
+    "statistics": [
+      "C2ST-S",
+      "C2ST-L"
+    ]
+  },
+  "outer_trials": {
+    "requested_start": 0,
+    "requested_end": 30,
+    "shard_id": "z10_lam001_N4000_epochs4000_seedmatched"
+  },
+  "internal_n_planned": [
+    500
+  ],
+  "paper_N_planned": [
+    4000
+  ],
+  "note": "Reconstructed WAE branch because Tian et al. did not release WAE source code or WAE logs. The WAE formulation follows Tolstikhin et al.'s WAE-MMD construction with a standard Gaussian prior and multi-scale IMQ kernel. The corrected HDGM WAE training recipe is matched to the recovered historical author configuration: adaptive representation-training epochs, batch size 1024, raw encoder passed into phase 2 through a frozen z=10 encoder and trainable nonlinear 30-D head, with C2ST LR=0.005. This script intentionally does not use the repo's MMDl RBF helper because its separately estimated XX/YY/XY bandwidths do not define a single common RBF kernel suitable for WAE prior matching.",
+  "summary": [
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "n_outer_trials": 30,
+      "RL-C2ST-S": 0.26666666666666666,
+      "RL-C2ST-L": 0.3
+    }
+  ],
+  "trial_records": [
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 0,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0008341364882653579,
+      "final_imq_mmd": 0.0008401274681091309,
+      "final_wae_loss": 0.0008425377600360662,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 170.88098001480103
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 1,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0012853426451329142,
+      "final_imq_mmd": 0.00224342942237854,
+      "final_wae_loss": 0.0013077769399387762,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 169.2775866985321
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 2,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0014918384258635342,
+      "final_imq_mmd": 0.0003825724124908447,
+      "final_wae_loss": 0.0014956641534809023,
+      "trial_power_s": 0.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 169.99719882011414
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 3,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0005239405218162574,
+      "final_imq_mmd": 0.0006713271141052246,
+      "final_wae_loss": 0.0005306537859723903,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 169.79840421676636
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 4,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.00108460352930706,
+      "final_imq_mmd": 0.0013048052787780762,
+      "final_wae_loss": 0.0010976516059599817,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 171.29738759994507
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 5,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0007150148594519123,
+      "final_imq_mmd": 0.0010005533695220947,
+      "final_wae_loss": 0.0007250203925650567,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 210.9265456199646
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 6,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.00040416787669528276,
+      "final_imq_mmd": 0.0007609128952026367,
+      "final_wae_loss": 0.00041177700040861964,
+      "trial_power_s": 1.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 222.63423705101013
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 7,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0011091089399997145,
+      "final_imq_mmd": 0.00026026368141174316,
+      "final_wae_loss": 0.001111711550038308,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 221.02533078193665
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 8,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0011254851706326008,
+      "final_imq_mmd": 0.0006247162818908691,
+      "final_wae_loss": 0.0011317323369439691,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 224.81837010383606
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 9,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0006900513544678688,
+      "final_imq_mmd": 0.0009106695652008057,
+      "final_wae_loss": 0.0006991580594331026,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 220.1597375869751
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 10,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0005582463782047853,
+      "final_imq_mmd": 0.0002726614475250244,
+      "final_wae_loss": 0.0005609729996649548,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 223.89219450950623
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 11,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.00047786445793462917,
+      "final_imq_mmd": 0.001023620367050171,
+      "final_wae_loss": 0.0004881006680079736,
+      "trial_power_s": 1.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 223.82181310653687
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 12,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0005343387310858816,
+      "final_imq_mmd": 0.0010654628276824951,
+      "final_wae_loss": 0.0005449933523777872,
+      "trial_power_s": 1.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 225.60011339187622
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 13,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0005567963671637699,
+      "final_imq_mmd": 0.000541985034942627,
+      "final_wae_loss": 0.0005622162279905751,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 223.86229348182678
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 14,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0004124713159399107,
+      "final_imq_mmd": 0.0006913542747497559,
+      "final_wae_loss": 0.00041938485810533166,
+      "trial_power_s": 1.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 221.95199513435364
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 15,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0015683152596466243,
+      "final_imq_mmd": 0.001006096601486206,
+      "final_wae_loss": 0.0015783762210048735,
+      "trial_power_s": 1.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 221.86310958862305
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 16,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0012392438802635297,
+      "final_imq_mmd": 0.0004985332489013672,
+      "final_wae_loss": 0.0012442292063497007,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 223.44723272323608
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 17,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0004953107854817063,
+      "final_imq_mmd": -4.506111145019531e-05,
+      "final_wae_loss": 0.0004948601781507023,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 223.78001832962036
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 18,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0006868414784548804,
+      "final_imq_mmd": 0.0002562105655670166,
+      "final_wae_loss": 0.0006894036050653085,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 220.2407729625702
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 19,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0015169006364885718,
+      "final_imq_mmd": 0.0010322332382202148,
+      "final_wae_loss": 0.0015272229793481529,
+      "trial_power_s": 1.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 221.1238989830017
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 20,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0005667572695529088,
+      "final_imq_mmd": 0.000459522008895874,
+      "final_wae_loss": 0.0005713524878956378,
+      "trial_power_s": 0.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 222.34614157676697
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 21,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0005580889555858448,
+      "final_imq_mmd": -0.00040337443351745605,
+      "final_wae_loss": 0.0005540552083402872,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 223.43149971961975
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 22,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.00047654371155658737,
+      "final_imq_mmd": 0.0007913410663604736,
+      "final_wae_loss": 0.000484457123093307,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 177.04327583312988
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 23,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0010426864173496142,
+      "final_imq_mmd": 0.0006054043769836426,
+      "final_wae_loss": 0.0010487404506420717,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 176.7539188861847
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 24,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0011119862901978195,
+      "final_imq_mmd": 7.978081703186035e-05,
+      "final_wae_loss": 0.0011127840698463842,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 207.10203790664673
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 25,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.00041866922401823103,
+      "final_imq_mmd": 0.0006483197212219238,
+      "final_wae_loss": 0.0004251524296705611,
+      "trial_power_s": 1.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 221.10806250572205
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 26,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0008160006254911423,
+      "final_imq_mmd": 0.00024271011352539062,
+      "final_wae_loss": 0.0008184277248801664,
+      "trial_power_s": 1.0,
+      "trial_power_l": 1.0,
+      "elapsed_seconds": 224.21962785720825
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 27,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0005375870678108186,
+      "final_imq_mmd": 0.00026798248291015625,
+      "final_wae_loss": 0.0005402668975875713,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 222.07726907730103
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 28,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.0007339398143813014,
+      "final_imq_mmd": 0.0008872449398040771,
+      "final_wae_loss": 0.000742812262615189,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 223.70192980766296
+    },
+    {
+      "internal_n": 500,
+      "paper_N": 4000,
+      "outer_trial": 29,
+      "wae_epochs": 4000,
+      "final_reconstruction_loss": 0.000840054199215956,
+      "final_imq_mmd": 0.0009221136569976807,
+      "final_wae_loss": 0.0008492753404425457,
+      "trial_power_s": 0.0,
+      "trial_power_l": 0.0,
+      "elapsed_seconds": 223.3493332862854
+    }
+  ],
+  "ts": "2026-09-17 20:30:16"
+}

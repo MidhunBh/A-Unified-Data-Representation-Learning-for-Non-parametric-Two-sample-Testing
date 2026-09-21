@@ -1,0 +1,90 @@
+{
+  "diagnostic": "corrected d10 N4000 vanilla vs historical AE",
+  "d": 10,
+  "internal_n": 100,
+  "paper_N": 4000,
+  "mapping": "paper_N = 4 * internal_n * d",
+  "n_outer": 10,
+  "n_permutations": 100,
+  "raw": {
+    "C2ST-S": 0.1,
+    "C2ST-L": 0.1
+  },
+  "historical_AE": {
+    "epochs": 2000,
+    "C2ST-S": 0.0,
+    "C2ST-L": 0.0
+  },
+  "records": [
+    {
+      "seed": 0,
+      "raw_s": 0,
+      "raw_l": 0,
+      "ae_s": 0,
+      "ae_l": 0
+    },
+    {
+      "seed": 1,
+      "raw_s": 0,
+      "raw_l": 0,
+      "ae_s": 0,
+      "ae_l": 0
+    },
+    {
+      "seed": 2,
+      "raw_s": 0,
+      "raw_l": 0,
+      "ae_s": 0,
+      "ae_l": 0
+    },
+    {
+      "seed": 3,
+      "raw_s": 0,
+      "raw_l": 0,
+      "ae_s": 0,
+      "ae_l": 0
+    },
+    {
+      "seed": 4,
+      "raw_s": 0,
+      "raw_l": 0,
+      "ae_s": 0,
+      "ae_l": 0
+    },
+    {
+      "seed": 5,
+      "raw_s": 0,
+      "raw_l": 0,
+      "ae_s": 0,
+      "ae_l": 0
+    },
+    {
+      "seed": 6,
+      "raw_s": 0,
+      "raw_l": 0,
+      "ae_s": 0,
+      "ae_l": 0
+    },
+    {
+      "seed": 7,
+      "raw_s": 0,
+      "raw_l": 0,
+      "ae_s": 0,
+      "ae_l": 0
+    },
+    {
+      "seed": 8,
+      "raw_s": 1,
+      "raw_l": 1,
+      "ae_s": 0,
+      "ae_l": 0
+    },
+    {
+      "seed": 9,
+      "raw_s": 0,
+      "raw_l": 0,
+      "ae_s": 0,
+      "ae_l": 0
+    }
+  ]
+}

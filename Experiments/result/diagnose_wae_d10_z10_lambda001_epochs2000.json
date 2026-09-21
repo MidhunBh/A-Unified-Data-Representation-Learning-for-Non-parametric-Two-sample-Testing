@@ -1,0 +1,66 @@
+{
+  "experiment": "HDGM d=10 WAE Phase-1 transfer sanity check",
+  "purpose": "Check transfer of the locked d=2 lambda=0.01 to z=d=10 without using downstream test power.",
+  "d": 10,
+  "latent_dim": 10,
+  "internal_n": 100,
+  "paper_N": 4000,
+  "epochs": 2000,
+  "batch_size": 1024,
+  "learning_rate": 0.002,
+  "lambdas": [
+    0.01
+  ],
+  "dataset_seeds": [
+    0,
+    1,
+    2
+  ],
+  "selection_policy": "No downstream power used. lambda=0 is only a reconstruction-only reference; lambda=0.01 is the pre-existing locked d=2 setting being checked for transfer.",
+  "results": [
+    {
+      "dataset_seed": 0,
+      "lambda_mmd": 0.01,
+      "reconstruction_mse": 0.0013103223172947764,
+      "train_imq_mmd": 0.01770913600921631,
+      "eval_imq_mmd": 0.02224123477935791,
+      "latent_mean_norm": 0.08606459200382233,
+      "mean_latent_variance": 0.8225864171981812,
+      "effective_covariance_rank": 9.17809952319485,
+      "elapsed_seconds": 15.950961351394653
+    },
+    {
+      "dataset_seed": 1,
+      "lambda_mmd": 0.01,
+      "reconstruction_mse": 0.001253475435078144,
+      "train_imq_mmd": 0.014720559120178223,
+      "eval_imq_mmd": 0.016948461532592773,
+      "latent_mean_norm": 0.07537481188774109,
+      "mean_latent_variance": 0.831921398639679,
+      "effective_covariance_rank": 9.217291908607077,
+      "elapsed_seconds": 17.349137544631958
+    },
+    {
+      "dataset_seed": 2,
+      "lambda_mmd": 0.01,
+      "reconstruction_mse": 0.0027302091475576162,
+      "train_imq_mmd": 0.024449825286865234,
+      "eval_imq_mmd": 0.02418529987335205,
+      "latent_mean_norm": 0.08517661690711975,
+      "mean_latent_variance": 0.7993119359016418,
+      "effective_covariance_rank": 9.037441400484544,
+      "elapsed_seconds": 16.98593783378601
+    }
+  ],
+  "summary": [
+    {
+      "lambda_mmd": 0.01,
+      "reconstruction_mse": 0.0017646689666435122,
+      "eval_imq_mmd": 0.021124998728434246,
+      "latent_mean_norm": 0.08220534026622772,
+      "mean_latent_variance": 0.8179399172465006,
+      "effective_covariance_rank": 9.144277610762158
+    }
+  ],
+  "timestamp": "2026-09-17 15:09:51"
+}

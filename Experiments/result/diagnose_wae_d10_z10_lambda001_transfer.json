@@ -1,0 +1,108 @@
+{
+  "experiment": "HDGM d=10 WAE Phase-1 transfer sanity check",
+  "purpose": "Check transfer of the locked d=2 lambda=0.01 to z=d=10 without using downstream test power.",
+  "d": 10,
+  "latent_dim": 10,
+  "internal_n": 100,
+  "paper_N": 4000,
+  "epochs": 4000,
+  "batch_size": 1024,
+  "learning_rate": 0.002,
+  "lambdas": [
+    0.0,
+    0.01
+  ],
+  "dataset_seeds": [
+    0,
+    1,
+    2
+  ],
+  "selection_policy": "No downstream power used. lambda=0 is only a reconstruction-only reference; lambda=0.01 is the pre-existing locked d=2 setting being checked for transfer.",
+  "results": [
+    {
+      "dataset_seed": 0,
+      "lambda_mmd": 0.0,
+      "reconstruction_mse": 0.0008443937986157835,
+      "train_imq_mmd": 4.722043514251709,
+      "eval_imq_mmd": 4.676021575927734,
+      "latent_mean_norm": 21.578025817871094,
+      "mean_latent_variance": 3.353947877883911,
+      "effective_covariance_rank": 8.600467788495214,
+      "elapsed_seconds": 34.914965867996216
+    },
+    {
+      "dataset_seed": 0,
+      "lambda_mmd": 0.01,
+      "reconstruction_mse": 0.0006932872347533703,
+      "train_imq_mmd": 0.0047185420989990234,
+      "eval_imq_mmd": 0.0061637163162231445,
+      "latent_mean_norm": 0.028811439871788025,
+      "mean_latent_variance": 0.9434852600097656,
+      "effective_covariance_rank": 9.512276077415473,
+      "elapsed_seconds": 33.7628436088562
+    },
+    {
+      "dataset_seed": 1,
+      "lambda_mmd": 0.0,
+      "reconstruction_mse": 0.0031258047092705965,
+      "train_imq_mmd": 4.714693546295166,
+      "eval_imq_mmd": 4.689078330993652,
+      "latent_mean_norm": 20.532251358032227,
+      "mean_latent_variance": 3.0903937816619873,
+      "effective_covariance_rank": 8.470826792631808,
+      "elapsed_seconds": 34.5997748374939
+    },
+    {
+      "dataset_seed": 1,
+      "lambda_mmd": 0.01,
+      "reconstruction_mse": 0.0005721113411709666,
+      "train_imq_mmd": 0.0041429996490478516,
+      "eval_imq_mmd": 0.002715587615966797,
+      "latent_mean_norm": 0.04598803445696831,
+      "mean_latent_variance": 0.9586715698242188,
+      "effective_covariance_rank": 9.528884739436558,
+      "elapsed_seconds": 33.49977493286133
+    },
+    {
+      "dataset_seed": 2,
+      "lambda_mmd": 0.0,
+      "reconstruction_mse": 0.0009779172251001,
+      "train_imq_mmd": 4.785059928894043,
+      "eval_imq_mmd": 4.762938976287842,
+      "latent_mean_norm": 22.413070678710938,
+      "mean_latent_variance": 3.435579776763916,
+      "effective_covariance_rank": 8.132615956385022,
+      "elapsed_seconds": 33.90836429595947
+    },
+    {
+      "dataset_seed": 2,
+      "lambda_mmd": 0.01,
+      "reconstruction_mse": 0.0009533885167911649,
+      "train_imq_mmd": 0.00337982177734375,
+      "eval_imq_mmd": 0.0032864809036254883,
+      "latent_mean_norm": 0.04982614889740944,
+      "mean_latent_variance": 0.9593088030815125,
+      "effective_covariance_rank": 9.57311827765986,
+      "elapsed_seconds": 33.603065490722656
+    }
+  ],
+  "summary": [
+    {
+      "lambda_mmd": 0.0,
+      "reconstruction_mse": 0.0016493719109954934,
+      "eval_imq_mmd": 4.709346294403076,
+      "latent_mean_norm": 21.507782618204754,
+      "mean_latent_variance": 3.293307145436605,
+      "effective_covariance_rank": 8.401303512504015
+    },
+    {
+      "lambda_mmd": 0.01,
+      "reconstruction_mse": 0.000739595697571834,
+      "eval_imq_mmd": 0.0040552616119384766,
+      "latent_mean_norm": 0.041541874408721924,
+      "mean_latent_variance": 0.9538218776384989,
+      "effective_covariance_rank": 9.538093031503964
+    }
+  ],
+  "timestamp": "2026-09-17 14:58:51"
+}
