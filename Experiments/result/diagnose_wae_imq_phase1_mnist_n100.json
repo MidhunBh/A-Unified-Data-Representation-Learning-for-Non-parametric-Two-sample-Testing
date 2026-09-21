@@ -1,0 +1,63 @@
+{
+  "dataset": "MNIST vs Fake MNIST",
+  "purpose": "Phase-1-only WAE diagnostic",
+  "internal_n": 100,
+  "paper_M": 200,
+  "kk": 0,
+  "z_dim": 100,
+  "epochs": 1000,
+  "lr": 0.002,
+  "batch_size": 200,
+  "seed": 1102,
+  "imq_scales": [
+    0.1,
+    0.2,
+    0.5,
+    1.0,
+    2.0,
+    5.0,
+    10.0
+  ],
+  "results": [
+    {
+      "condition": "author_AE",
+      "lambda_mmd": null,
+      "recon_mse": 0.0034539224579930305,
+      "imq_mmd": 0.29419875144958496,
+      "latent_abs_mean": 0.33910703659057617,
+      "latent_std_mean": 1.2666120529174805,
+      "latent_std_min": 0.939073383808136,
+      "latent_std_max": 1.7347184419631958
+    },
+    {
+      "condition": "WAE",
+      "lambda_mmd": 0.0,
+      "recon_mse": 0.0034539224579930305,
+      "imq_mmd": 0.29419875144958496,
+      "latent_abs_mean": 0.33910703659057617,
+      "latent_std_mean": 1.2666120529174805,
+      "latent_std_min": 0.939073383808136,
+      "latent_std_max": 1.7347184419631958
+    },
+    {
+      "condition": "WAE",
+      "lambda_mmd": 0.01,
+      "recon_mse": 0.0034578442573547363,
+      "imq_mmd": 0.018869757652282715,
+      "latent_abs_mean": 0.050576236099004745,
+      "latent_std_mean": 1.0002230405807495,
+      "latent_std_min": 0.6933969855308533,
+      "latent_std_max": 1.3424699306488037
+    },
+    {
+      "condition": "WAE",
+      "lambda_mmd": 0.1,
+      "recon_mse": 0.0033272975124418736,
+      "imq_mmd": 0.00570070743560791,
+      "latent_abs_mean": 0.024748528376221657,
+      "latent_std_mean": 1.002975344657898,
+      "latent_std_min": 0.6386614441871643,
+      "latent_std_max": 1.3806278705596924
+    }
+  ]
+}
