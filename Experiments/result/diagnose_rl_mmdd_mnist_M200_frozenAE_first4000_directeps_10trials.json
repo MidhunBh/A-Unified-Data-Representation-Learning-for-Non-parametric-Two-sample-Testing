@@ -1,0 +1,127 @@
+{
+  "method": "RL-MMD-D reconstruction",
+  "dataset": "MNIST vs Fake MNIST",
+  "paper_M": 200,
+  "internal_n": 100,
+  "n_outer": 10,
+  "phase1": {
+    "model": "standard Autoencoder_Img",
+    "latent_dim": 100,
+    "epochs": 1000,
+    "lr": 0.002,
+    "batch": 200,
+    "pooled_train_and_test": true
+  },
+  "phase2": {
+    "encoder_frozen": true,
+    "extra_feature_network": false,
+    "kernel": "MMD-D using frozen AE features + raw image distance",
+    "epsilon": "direct Uniform(0,1e-8)",
+    "epochs": 2000,
+    "lr": 0.001,
+    "batch": 100
+  },
+  "evaluation": {
+    "calibrations_per_outer": 100,
+    "permutations_per_calibration": 100,
+    "alpha": 0.05
+  },
+  "mean_conditional_rejection": 0.0,
+  "references": {
+    "vanilla_MMD_D_reproduction_M200": 0.2454,
+    "paper_MMD_D_M200": 0.29,
+    "paper_RL_MMD_D_M200": 0.42
+  },
+  "records": [
+    {
+      "trial": 0,
+      "conditional_rejection": 0.0,
+      "final_reconstruction_mse": 0.003551235073246062,
+      "final_J": 0.04769459366798401,
+      "epsilon": 0.07835032045841217,
+      "sigma": 1902.7745361328125,
+      "sigma0": 0.002956394338980317
+    },
+    {
+      "trial": 1,
+      "conditional_rejection": 0.0,
+      "final_reconstruction_mse": 0.003800413804128766,
+      "final_J": 0.12675049901008606,
+      "epsilon": 0.0884939655661583,
+      "sigma": 1896.4383544921875,
+      "sigma0": 0.06425778567790985
+    },
+    {
+      "trial": 2,
+      "conditional_rejection": 0.0,
+      "final_reconstruction_mse": 0.003542104735970497,
+      "final_J": 0.11622390151023865,
+      "epsilon": 0.07823538035154343,
+      "sigma": 1974.5504150390625,
+      "sigma0": 0.0032243113964796066
+    },
+    {
+      "trial": 3,
+      "conditional_rejection": 0.0,
+      "final_reconstruction_mse": 0.0039057814283296466,
+      "final_J": 0.10654173046350479,
+      "epsilon": -0.11810305714607239,
+      "sigma": 1898.4100341796875,
+      "sigma0": 0.005764750298112631
+    },
+    {
+      "trial": 4,
+      "conditional_rejection": 0.0,
+      "final_reconstruction_mse": 0.003769075614400208,
+      "final_J": 0.05802452191710472,
+      "epsilon": 0.0882677510380745,
+      "sigma": 1901.9765625,
+      "sigma0": 0.034399788826704025
+    },
+    {
+      "trial": 5,
+      "conditional_rejection": 0.0,
+      "final_reconstruction_mse": 0.0039263126673176885,
+      "final_J": 0.01531273778527975,
+      "epsilon": 0.07911710441112518,
+      "sigma": 2234.218994140625,
+      "sigma0": 0.0025464778300374746
+    },
+    {
+      "trial": 6,
+      "conditional_rejection": 0.0,
+      "final_reconstruction_mse": 0.003824500599876046,
+      "final_J": 0.12267741560935974,
+      "epsilon": -0.12655259668827057,
+      "sigma": 2050.738037109375,
+      "sigma0": 0.05123983696103096
+    },
+    {
+      "trial": 7,
+      "conditional_rejection": 0.0,
+      "final_reconstruction_mse": 0.0037982374196872115,
+      "final_J": 0.1351182758808136,
+      "epsilon": 0.06386224180459976,
+      "sigma": 1924.6427001953125,
+      "sigma0": 0.05390693619847298
+    },
+    {
+      "trial": 8,
+      "conditional_rejection": 0.0,
+      "final_reconstruction_mse": 0.003809035522863269,
+      "final_J": 0.11623238772153854,
+      "epsilon": -0.12554489076137543,
+      "sigma": 2208.6826171875,
+      "sigma0": 0.0615774504840374
+    },
+    {
+      "trial": 9,
+      "conditional_rejection": 0.0,
+      "final_reconstruction_mse": 0.0036690064007416368,
+      "final_J": 0.0012027611956000328,
+      "epsilon": -0.10254040360450745,
+      "sigma": 1864.9976806640625,
+      "sigma0": 0.06927283853292465
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "commit": "diagnostic-no-git-cli",
+  "method": "RL-MMD-D",
+  "dataset": "MNIST vs Fake MNIST",
+  "metric": "test power",
+  "panel": "Table 3",
+  "internal_n": [
+    100
+  ],
+  "paper_M": [
+    200
+  ],
+  "N_TRAIL": 10,
+  "N_EPOCH": 1000,
+  "lr_mmd": 5e-06,
+  "note": "Original MNIST RL-MMD-D latent-head template; only change is lr_mmd=5e-6, transferred from independently established HDGM RL-MMD-D correction.",
+  "result": [
+    0.259
+  ],
+  "ts": "2026-09-22 15:36"
+}

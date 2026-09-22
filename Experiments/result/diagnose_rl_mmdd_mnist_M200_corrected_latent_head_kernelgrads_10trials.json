@@ -1,0 +1,205 @@
+{
+  "method": "RL-MMD-D corrected latent-head diagnostic",
+  "paper_M": 200,
+  "internal_n": 100,
+  "n_outer": 10,
+  "phase1": {
+    "AE_latent": 100,
+    "epochs": 1000,
+    "batch": 200,
+    "lr": 0.002,
+    "pooled_unlabeled": true,
+    "encoder_frozen": true
+  },
+  "phase2": {
+    "architecture": "AE IR 100 -> ModelLatentF(100,30,30)",
+    "epochs": 1000,
+    "lr": 5e-05,
+    "kernel_parameters_trainable": true,
+    "epsilon_parameterization": "historical log/sigmoid",
+    "Fea_org": "100-D AE intrinsic representation"
+  },
+  "evaluation": {
+    "calibrations_per_outer": 100,
+    "permutations": 100,
+    "calibration_seed": "k"
+  },
+  "mean_conditional_rejection": 0.044,
+  "references": {
+    "locked_vanilla_MMD_D": 0.2454,
+    "paper_vanilla_MMD_D": 0.29,
+    "paper_RL_MMD_D": 0.42
+  },
+  "records": [
+    {
+      "trial": 0,
+      "conditional_rejection": 0.05,
+      "reconstruction_mse": 0.0036137395072728395,
+      "first_J": -0.06605815887451172,
+      "last_J": 50.28318786621094,
+      "initial_kernel": {
+        "epsilon": 2.026156499523868e-11,
+        "sigma": 200.0,
+        "sigma0": 0.005000000353902578
+      },
+      "final_kernel": {
+        "epsilon": 2.009729362095758e-11,
+        "sigma": 200.98495483398438,
+        "sigma0": 0.003226763103157282
+      }
+    },
+    {
+      "trial": 1,
+      "conditional_rejection": 0.0,
+      "reconstruction_mse": 0.0034934363793581724,
+      "first_J": 0.06662989407777786,
+      "last_J": 35.96147537231445,
+      "initial_kernel": {
+        "epsilon": 9.121709637627262e-11,
+        "sigma": 200.0,
+        "sigma0": 0.005000000353902578
+      },
+      "final_kernel": {
+        "epsilon": 9.026657199484589e-11,
+        "sigma": 201.14401245117188,
+        "sigma0": 0.003969523124396801
+      }
+    },
+    {
+      "trial": 2,
+      "conditional_rejection": 0.0,
+      "reconstruction_mse": 0.003501467523165047,
+      "first_J": 0.03426477313041687,
+      "last_J": 65.11585998535156,
+      "initial_kernel": {
+        "epsilon": 7.273362467863365e-11,
+        "sigma": 200.0,
+        "sigma0": 0.005000000353902578
+      },
+      "final_kernel": {
+        "epsilon": 7.223123488220295e-11,
+        "sigma": 200.7438201904297,
+        "sigma0": 0.0038654454983770847
+      }
+    },
+    {
+      "trial": 3,
+      "conditional_rejection": 0.0,
+      "reconstruction_mse": 0.0039162051398307085,
+      "first_J": 0.08907754719257355,
+      "last_J": 23.02900505065918,
+      "initial_kernel": {
+        "epsilon": 4.61835673870592e-11,
+        "sigma": 200.0,
+        "sigma0": 0.005000000353902578
+      },
+      "final_kernel": {
+        "epsilon": 4.615644672023578e-11,
+        "sigma": 201.62315368652344,
+        "sigma0": 0.0032464677933603525
+      }
+    },
+    {
+      "trial": 4,
+      "conditional_rejection": 0.0,
+      "reconstruction_mse": 0.003897404414601624,
+      "first_J": -0.03544223681092262,
+      "last_J": 41.576805114746094,
+      "initial_kernel": {
+        "epsilon": 1.047655451974494e-11,
+        "sigma": 200.0,
+        "sigma0": 0.005000000353902578
+      },
+      "final_kernel": {
+        "epsilon": 1.0415685675058128e-11,
+        "sigma": 202.0912322998047,
+        "sigma0": 0.004015282262116671
+      }
+    },
+    {
+      "trial": 5,
+      "conditional_rejection": 0.0,
+      "reconstruction_mse": 0.003693272708915174,
+      "first_J": -0.0397273451089859,
+      "last_J": 58.73981475830078,
+      "initial_kernel": {
+        "epsilon": 2.6842083785706683e-13,
+        "sigma": 200.0,
+        "sigma0": 0.005000000353902578
+      },
+      "final_kernel": {
+        "epsilon": 2.6842083785706683e-13,
+        "sigma": 200.78428649902344,
+        "sigma0": 0.004321420099586248
+      }
+    },
+    {
+      "trial": 6,
+      "conditional_rejection": 0.0,
+      "reconstruction_mse": 0.003821801161393523,
+      "first_J": 0.06321758031845093,
+      "last_J": 74.4365234375,
+      "initial_kernel": {
+        "epsilon": 8.160210701602111e-11,
+        "sigma": 200.0,
+        "sigma0": 0.005000000353902578
+      },
+      "final_kernel": {
+        "epsilon": 8.097000153695078e-11,
+        "sigma": 201.07473754882812,
+        "sigma0": 0.003658195724710822
+      }
+    },
+    {
+      "trial": 7,
+      "conditional_rejection": 0.0,
+      "reconstruction_mse": 0.0033847319427877665,
+      "first_J": -0.09319586306810379,
+      "last_J": 49.70455551147461,
+      "initial_kernel": {
+        "epsilon": 6.909911531849389e-11,
+        "sigma": 200.0,
+        "sigma0": 0.005000000353902578
+      },
+      "final_kernel": {
+        "epsilon": 6.828483611887037e-11,
+        "sigma": 202.06495666503906,
+        "sigma0": 0.003914989531040192
+      }
+    },
+    {
+      "trial": 8,
+      "conditional_rejection": 0.39,
+      "reconstruction_mse": 0.003930229810066521,
+      "first_J": 0.17769759893417358,
+      "last_J": 59.501224517822266,
+      "initial_kernel": {
+        "epsilon": 6.007604830271518e-11,
+        "sigma": 200.0,
+        "sigma0": 0.005000000353902578
+      },
+      "final_kernel": {
+        "epsilon": 6.027770643735053e-11,
+        "sigma": 201.5283660888672,
+        "sigma0": 0.003562318626791239
+      }
+    },
+    {
+      "trial": 9,
+      "conditional_rejection": 0.0,
+      "reconstruction_mse": 0.003404342452995479,
+      "first_J": 0.08406823873519897,
+      "last_J": 47.618831634521484,
+      "initial_kernel": {
+        "epsilon": 3.831448006086369e-11,
+        "sigma": 200.0,
+        "sigma0": 0.005000000353902578
+      },
+      "final_kernel": {
+        "epsilon": 3.8295262794196816e-11,
+        "sigma": 201.1436767578125,
+        "sigma0": 0.003987038508057594
+      }
+    }
+  ]
+}

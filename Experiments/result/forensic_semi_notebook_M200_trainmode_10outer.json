@@ -1,0 +1,144 @@
+{
+  "method": "Forensic semi-MNIST notebook MMD path",
+  "dataset": "MNIST vs Fake MNIST",
+  "implementation": {
+    "data_pool": "first 4000 samples from real and fake pools",
+    "pool_size": 4000,
+    "epsilon_parameterization": "direct",
+    "epsilon_initialization": "Uniform(0, 1e-8)",
+    "architecture": "CNN 16-32-64-128 with 100-D output",
+    "objective": "standardized deep MMD",
+    "epochs": 2000,
+    "paired_batch_size": 100,
+    "lr": 0.001
+  },
+  "evaluation": {
+    "outer_datasets": 10,
+    "permutation_calibrations_per_outer": 100,
+    "permutations_per_calibration": 100,
+    "alpha": 0.05,
+    "note": "Each outer dataset contributes the mean of 100 permutation-test rejection indicators, matching the released Tian notebook protocol."
+  },
+  "internal_n_grid": [
+    100
+  ],
+  "paper_M_grid": [
+    200
+  ],
+  "reference_table3": {
+    "M200": 0.29,
+    "M400": 0.996,
+    "M600": 1.0,
+    "M800": 1.0,
+    "M1000": 1.0
+  },
+  "torch_version": "2.8.0+cu128",
+  "python_version": "3.9.25",
+  "results": [
+    {
+      "internal_n": 100,
+      "paper_M": 200,
+      "n_outer_completed": 10,
+      "paper_protocol_estimate": 0.369,
+      "std_across_outer": 0.4733908415769035
+    }
+  ],
+  "points": {
+    "100": {
+      "internal_n": 100,
+      "paper_M": 200,
+      "records": [
+        {
+          "trial": 0,
+          "conditional_rejection": 0.0,
+          "final_J": 5.998082160949707,
+          "epsilon": -0.13380320370197296,
+          "sigma": 2043.8936767578125,
+          "sigma0": 0.039024971425533295,
+          "source": "full_grid_run"
+        },
+        {
+          "trial": 1,
+          "conditional_rejection": 1.0,
+          "final_J": 226.78485107421875,
+          "epsilon": -0.23281559348106384,
+          "sigma": 2131.23828125,
+          "sigma0": 0.04295513033866882,
+          "source": "full_grid_run"
+        },
+        {
+          "trial": 2,
+          "conditional_rejection": 0.0,
+          "final_J": 14.62072467803955,
+          "epsilon": -0.14310888946056366,
+          "sigma": 2062.087158203125,
+          "sigma0": 0.039015624672174454,
+          "source": "full_grid_run"
+        },
+        {
+          "trial": 3,
+          "conditional_rejection": 1.0,
+          "final_J": 173.25335693359375,
+          "epsilon": 0.4177911877632141,
+          "sigma": 2127.982666015625,
+          "sigma0": 0.06570235639810562,
+          "source": "full_grid_run"
+        },
+        {
+          "trial": 4,
+          "conditional_rejection": 0.0,
+          "final_J": 2.616285562515259,
+          "epsilon": -0.23605725169181824,
+          "sigma": 2034.2802734375,
+          "sigma0": 0.02224421501159668,
+          "source": "full_grid_run"
+        },
+        {
+          "trial": 5,
+          "conditional_rejection": 0.08,
+          "final_J": 0.6777618527412415,
+          "epsilon": -0.2546619474887848,
+          "sigma": 2136.95361328125,
+          "sigma0": 0.0416877456009388,
+          "source": "full_grid_run"
+        },
+        {
+          "trial": 6,
+          "conditional_rejection": 0.0,
+          "final_J": 77.98350524902344,
+          "epsilon": -0.42252886295318604,
+          "sigma": 2123.108642578125,
+          "sigma0": 0.058846645057201385,
+          "source": "full_grid_run"
+        },
+        {
+          "trial": 7,
+          "conditional_rejection": 0.61,
+          "final_J": 104.70103454589844,
+          "epsilon": -0.49836504459381104,
+          "sigma": 2145.574951171875,
+          "sigma0": 0.07521849125623703,
+          "source": "full_grid_run"
+        },
+        {
+          "trial": 8,
+          "conditional_rejection": 0.0,
+          "final_J": 4.928079128265381,
+          "epsilon": -0.17516669631004333,
+          "sigma": 2038.3824462890625,
+          "sigma0": 0.028564345091581345,
+          "source": "full_grid_run"
+        },
+        {
+          "trial": 9,
+          "conditional_rejection": 1.0,
+          "final_J": 23.091106414794922,
+          "epsilon": 0.29243117570877075,
+          "sigma": 2105.765380859375,
+          "sigma0": 0.059675395488739014,
+          "source": "full_grid_run"
+        }
+      ]
+    }
+  }
+}

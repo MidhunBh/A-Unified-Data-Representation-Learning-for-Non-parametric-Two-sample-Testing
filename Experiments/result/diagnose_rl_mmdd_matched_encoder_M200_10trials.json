@@ -1,0 +1,254 @@
+{
+  "method": "RL-MMD-D matched-encoder diagnostic",
+  "paper_M": 200,
+  "internal_n": 100,
+  "n_outer": 10,
+  "phase1": {
+    "architecture": "same 16-32-64-128-100 encoder as MMD-D",
+    "epochs": 1000,
+    "batch": 200,
+    "lr": 0.002,
+    "pooled_unlabeled": true
+  },
+  "phase2": {
+    "architecture": "locked MNIST MMD-D",
+    "epochs": 2000,
+    "lr": 0.001,
+    "epsilon": "direct Uniform(0,1e-8)",
+    "raw_q": "original flattened pixels",
+    "first4000": true
+  },
+  "summary": {
+    "random_init": {
+      "mean": 0.23299999999999996,
+      "rates": [
+        0.0,
+        0.0,
+        0.0,
+        0.01,
+        0.84,
+        0.48,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    "ae_pretrained_init": {
+      "mean": 0.0,
+      "rates": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "results": {
+    "random_init": [
+      {
+        "conditional_rejection": 0.0,
+        "first_J": 0.044387198984622955,
+        "last_J": 7.069347858428955,
+        "epsilon": -0.050797801464796066,
+        "sigma": 2035.30078125,
+        "sigma0": 0.03628445044159889,
+        "trial": 0
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": 0.12460192292928696,
+        "last_J": 5.33869743347168,
+        "epsilon": 0.16693533957004547,
+        "sigma": 2037.9381103515625,
+        "sigma0": 0.03661532327532768,
+        "trial": 1
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": 0.052187059074640274,
+        "last_J": 0.7675741314888,
+        "epsilon": -0.1409151256084442,
+        "sigma": 2041.69921875,
+        "sigma0": 0.028636664152145386,
+        "trial": 2
+      },
+      {
+        "conditional_rejection": 0.01,
+        "first_J": 0.003591443644836545,
+        "last_J": 1.3734421730041504,
+        "epsilon": -0.19192315638065338,
+        "sigma": 2039.0865478515625,
+        "sigma0": 0.03262271732091904,
+        "trial": 3
+      },
+      {
+        "conditional_rejection": 0.84,
+        "first_J": 0.06161525845527649,
+        "last_J": 228.05917358398438,
+        "epsilon": 0.2787921726703644,
+        "sigma": 2134.91943359375,
+        "sigma0": 0.036827825009822845,
+        "trial": 4
+      },
+      {
+        "conditional_rejection": 0.48,
+        "first_J": -0.020440004765987396,
+        "last_J": 83.12981414794922,
+        "epsilon": -0.11612268537282944,
+        "sigma": 2077.13916015625,
+        "sigma0": 0.037051450461149216,
+        "trial": 5
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": -0.11172331124544144,
+        "last_J": 2.668825149536133,
+        "epsilon": -0.20361636579036713,
+        "sigma": 2134.92626953125,
+        "sigma0": 0.06341685354709625,
+        "trial": 6
+      },
+      {
+        "conditional_rejection": 1.0,
+        "first_J": 0.14596858620643616,
+        "last_J": 276.9236755371094,
+        "epsilon": -0.5011430382728577,
+        "sigma": 2140.9267578125,
+        "sigma0": 0.041094787418842316,
+        "trial": 7
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": -0.009413150139153004,
+        "last_J": 19.206830978393555,
+        "epsilon": 0.11471536755561829,
+        "sigma": 2182.3408203125,
+        "sigma0": 0.05319076403975487,
+        "trial": 8
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": 0.0017824633978307247,
+        "last_J": 0.8371516466140747,
+        "epsilon": -0.07784632593393326,
+        "sigma": 2045.0313720703125,
+        "sigma0": 0.020524345338344574,
+        "trial": 9
+      }
+    ],
+    "ae_pretrained_init": [
+      {
+        "conditional_rejection": 0.0,
+        "first_J": -6.584146831301041e-06,
+        "last_J": 0.04798050597310066,
+        "epsilon": 0.08404666930437088,
+        "sigma": 1906.7149658203125,
+        "sigma0": 0.004988126456737518,
+        "trial": 0,
+        "phase1_reconstruction_mse": 0.018356026150286198
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": -8.02532576926751e-06,
+        "last_J": 0.12678159773349762,
+        "epsilon": 0.09172295033931732,
+        "sigma": 1897.9024658203125,
+        "sigma0": 0.04265855252742767,
+        "trial": 1,
+        "phase1_reconstruction_mse": 0.015754140447825193
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": -1.0056717201223364e-06,
+        "last_J": 0.11582860350608826,
+        "epsilon": 0.08024641871452332,
+        "sigma": 1979.4139404296875,
+        "sigma0": 0.012849167920649052,
+        "trial": 2,
+        "phase1_reconstruction_mse": 0.008844827068969607
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": -2.5888166419463232e-06,
+        "last_J": 0.10606644302606583,
+        "epsilon": -0.13346725702285767,
+        "sigma": 1898.77099609375,
+        "sigma0": 0.06817179173231125,
+        "trial": 3,
+        "phase1_reconstruction_mse": 0.020210206508636475
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": -4.917937076243106e-06,
+        "last_J": 0.05801687762141228,
+        "epsilon": 0.09587735682725906,
+        "sigma": 1903.2913818359375,
+        "sigma0": 0.05008525401353836,
+        "trial": 4,
+        "phase1_reconstruction_mse": 0.01657070266082883
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": -2.2583591885450005e-07,
+        "last_J": 0.015638913959264755,
+        "epsilon": 0.08119624108076096,
+        "sigma": 2232.63134765625,
+        "sigma0": 0.002355957170948386,
+        "trial": 5,
+        "phase1_reconstruction_mse": 0.01583953946828842
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": -1.38644878688865e-07,
+        "last_J": 0.12284158915281296,
+        "epsilon": -0.138513445854187,
+        "sigma": 2058.527587890625,
+        "sigma0": 0.042329587042331696,
+        "trial": 6,
+        "phase1_reconstruction_mse": 0.0120256501249969
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": -9.88284227787517e-07,
+        "last_J": 0.1350056678056717,
+        "epsilon": 0.0858919620513916,
+        "sigma": 1935.103759765625,
+        "sigma0": 0.06797848641872406,
+        "trial": 7,
+        "phase1_reconstruction_mse": 0.013070647604763508
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": -9.972543011826929e-06,
+        "last_J": 0.11791139841079712,
+        "epsilon": -0.12731067836284637,
+        "sigma": 2206.05517578125,
+        "sigma0": 0.00573100196197629,
+        "trial": 8,
+        "phase1_reconstruction_mse": 0.01385643519461155
+      },
+      {
+        "conditional_rejection": 0.0,
+        "first_J": -5.307625087880297e-06,
+        "last_J": 0.0012144019128754735,
+        "epsilon": -0.09627575427293777,
+        "sigma": 1865.5341796875,
+        "sigma0": 0.02968783862888813,
+        "trial": 9,
+        "phase1_reconstruction_mse": 0.005418640561401844
+      }
+    ]
+  },
+  "references": {
+    "locked_vanilla_full100": 0.2454,
+    "paper_MMD_D": 0.29,
+    "paper_RL_MMD_D": 0.42
+  }
+}
