@@ -1,0 +1,389 @@
+{
+  "method": "MMD-D historical implementation diagnostic",
+  "dataset": "MNIST vs Fake MNIST",
+  "internal_n": 100,
+  "paper_M": 200,
+  "n_outer": 10,
+  "permutation_calibrations_per_outer": 100,
+  "training_epochs": 2000,
+  "training_batch": 100,
+  "training_lr": 0.001,
+  "author_first10_recorded": [
+    0.0,
+    0.85,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.05,
+    0.0,
+    0.61
+  ],
+  "author_first10_mean": 0.251,
+  "author_final_100outer_reference": 0.2885,
+  "torch_version": "2.8.0+cu128",
+  "python_version": "3.9.25",
+  "results": {
+    "full_sigmoid": {
+      "first4000": false,
+      "epsilon_mode": "sigmoid",
+      "rates": [
+        0.97,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.44,
+        0.0
+      ],
+      "mean": 0.141,
+      "mae_vs_author_first10": 0.39199999999999996,
+      "records": [
+        {
+          "trial": 0,
+          "conditional_rejection": 0.97,
+          "epsilon": 2.0258820662699684e-11,
+          "sigma": 2037.340576171875,
+          "sigma0": 0.020995935425162315
+        },
+        {
+          "trial": 1,
+          "conditional_rejection": 0.0,
+          "epsilon": 9.105908388429285e-11,
+          "sigma": 2033.9317626953125,
+          "sigma0": 0.0369952991604805
+        },
+        {
+          "trial": 2,
+          "conditional_rejection": 0.0,
+          "epsilon": 7.263297602255747e-11,
+          "sigma": 2044.178955078125,
+          "sigma0": 0.05432535707950592
+        },
+        {
+          "trial": 3,
+          "conditional_rejection": 0.0,
+          "epsilon": 4.620815188816074e-11,
+          "sigma": 2046.6546630859375,
+          "sigma0": 0.025216547772288322
+        },
+        {
+          "trial": 4,
+          "conditional_rejection": 0.0,
+          "epsilon": 1.0477513821827156e-11,
+          "sigma": 2042.2200927734375,
+          "sigma0": 0.033541012555360794
+        },
+        {
+          "trial": 5,
+          "conditional_rejection": 0.0,
+          "epsilon": 2.6842083785706683e-13,
+          "sigma": 2049.826171875,
+          "sigma0": 0.017288928851485252
+        },
+        {
+          "trial": 6,
+          "conditional_rejection": 0.0,
+          "epsilon": 8.170084747627371e-11,
+          "sigma": 2049.23486328125,
+          "sigma0": 0.020361023023724556
+        },
+        {
+          "trial": 7,
+          "conditional_rejection": 0.0,
+          "epsilon": 6.927000639755931e-11,
+          "sigma": 2043.6953125,
+          "sigma0": 0.01691387966275215
+        },
+        {
+          "trial": 8,
+          "conditional_rejection": 0.44,
+          "epsilon": 6.022530391058822e-11,
+          "sigma": 2043.6749267578125,
+          "sigma0": 0.020567944273352623
+        },
+        {
+          "trial": 9,
+          "conditional_rejection": 0.0,
+          "epsilon": 3.7420642973184925e-11,
+          "sigma": 2153.1044921875,
+          "sigma0": 0.042488470673561096
+        }
+      ]
+    },
+    "first4000_sigmoid": {
+      "first4000": true,
+      "epsilon_mode": "sigmoid",
+      "rates": [
+        0.0,
+        0.87,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean": 0.187,
+      "mae_vs_author_first10": 0.268,
+      "records": [
+        {
+          "trial": 0,
+          "conditional_rejection": 0.0,
+          "epsilon": 2.0261526831322207e-11,
+          "sigma": 2039.087646484375,
+          "sigma0": 0.03360411897301674
+        },
+        {
+          "trial": 1,
+          "conditional_rejection": 0.87,
+          "epsilon": 8.918839278226898e-11,
+          "sigma": 2137.075927734375,
+          "sigma0": 0.03959553316235542
+        },
+        {
+          "trial": 2,
+          "conditional_rejection": 0.0,
+          "epsilon": 7.436974647223593e-11,
+          "sigma": 2050.873291015625,
+          "sigma0": 0.022462913766503334
+        },
+        {
+          "trial": 3,
+          "conditional_rejection": 0.0,
+          "epsilon": 4.615080886893885e-11,
+          "sigma": 2040.571044921875,
+          "sigma0": 0.029888028278946877
+        },
+        {
+          "trial": 4,
+          "conditional_rejection": 0.0,
+          "epsilon": 1.0480451576033722e-11,
+          "sigma": 2045.4219970703125,
+          "sigma0": 0.026865027844905853
+        },
+        {
+          "trial": 5,
+          "conditional_rejection": 0.0,
+          "epsilon": 2.6842083785706683e-13,
+          "sigma": 2048.126953125,
+          "sigma0": 0.018627727404236794
+        },
+        {
+          "trial": 6,
+          "conditional_rejection": 1.0,
+          "epsilon": 8.011006441543955e-11,
+          "sigma": 2147.1279296875,
+          "sigma0": 0.06644820421934128
+        },
+        {
+          "trial": 7,
+          "conditional_rejection": 0.0,
+          "epsilon": 6.723451656531765e-11,
+          "sigma": 2040.6116943359375,
+          "sigma0": 0.035327620804309845
+        },
+        {
+          "trial": 8,
+          "conditional_rejection": 0.0,
+          "epsilon": 6.024276910654436e-11,
+          "sigma": 2138.4404296875,
+          "sigma0": 0.07412438094615936
+        },
+        {
+          "trial": 9,
+          "conditional_rejection": 0.0,
+          "epsilon": 3.8304248661802376e-11,
+          "sigma": 2040.397705078125,
+          "sigma0": 0.028582464903593063
+        }
+      ]
+    },
+    "full_direct": {
+      "first4000": false,
+      "epsilon_mode": "direct",
+      "rates": [
+        0.0,
+        0.15,
+        0.0,
+        0.01,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.6,
+        0.0
+      ],
+      "mean": 0.076,
+      "mae_vs_author_first10": 0.295,
+      "records": [
+        {
+          "trial": 0,
+          "conditional_rejection": 0.0,
+          "epsilon": -0.6664219498634338,
+          "sigma": 2131.358154296875,
+          "sigma0": 0.03706343099474907
+        },
+        {
+          "trial": 1,
+          "conditional_rejection": 0.15,
+          "epsilon": -0.21430790424346924,
+          "sigma": 2037.5933837890625,
+          "sigma0": 0.03904372453689575
+        },
+        {
+          "trial": 2,
+          "conditional_rejection": 0.0,
+          "epsilon": 0.4124036729335785,
+          "sigma": 2025.261962890625,
+          "sigma0": 0.02756831794977188
+        },
+        {
+          "trial": 3,
+          "conditional_rejection": 0.01,
+          "epsilon": 0.3789575397968292,
+          "sigma": 2147.808837890625,
+          "sigma0": 0.043434351682662964
+        },
+        {
+          "trial": 4,
+          "conditional_rejection": 0.0,
+          "epsilon": 0.062454674392938614,
+          "sigma": 2052.669677734375,
+          "sigma0": 0.032286420464515686
+        },
+        {
+          "trial": 5,
+          "conditional_rejection": 0.0,
+          "epsilon": -0.18132226169109344,
+          "sigma": 2045.157958984375,
+          "sigma0": 0.019776010885834694
+        },
+        {
+          "trial": 6,
+          "conditional_rejection": 0.0,
+          "epsilon": 0.24967965483665466,
+          "sigma": 2155.322021484375,
+          "sigma0": 0.03776463121175766
+        },
+        {
+          "trial": 7,
+          "conditional_rejection": 0.0,
+          "epsilon": -0.2909639775753021,
+          "sigma": 2025.1541748046875,
+          "sigma0": 0.02395038679242134
+        },
+        {
+          "trial": 8,
+          "conditional_rejection": 0.6,
+          "epsilon": -0.11242939531803131,
+          "sigma": 2122.064697265625,
+          "sigma0": 0.04323825612664223
+        },
+        {
+          "trial": 9,
+          "conditional_rejection": 0.0,
+          "epsilon": -0.22340631484985352,
+          "sigma": 2138.350830078125,
+          "sigma0": 0.040459465235471725
+        }
+      ]
+    },
+    "first4000_direct": {
+      "first4000": true,
+      "epsilon_mode": "direct",
+      "rates": [
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.07,
+        0.0,
+        0.61,
+        0.0,
+        1.0
+      ],
+      "mean": 0.368,
+      "mae_vs_author_first10": 0.11699999999999999,
+      "records": [
+        {
+          "trial": 0,
+          "conditional_rejection": 0.0,
+          "epsilon": -0.13380320370197296,
+          "sigma": 2043.8936767578125,
+          "sigma0": 0.039024971425533295
+        },
+        {
+          "trial": 1,
+          "conditional_rejection": 1.0,
+          "epsilon": -0.23281559348106384,
+          "sigma": 2131.23828125,
+          "sigma0": 0.04295513033866882
+        },
+        {
+          "trial": 2,
+          "conditional_rejection": 0.0,
+          "epsilon": -0.14310888946056366,
+          "sigma": 2062.087158203125,
+          "sigma0": 0.039015624672174454
+        },
+        {
+          "trial": 3,
+          "conditional_rejection": 1.0,
+          "epsilon": 0.4177911877632141,
+          "sigma": 2127.982666015625,
+          "sigma0": 0.06570235639810562
+        },
+        {
+          "trial": 4,
+          "conditional_rejection": 0.0,
+          "epsilon": -0.23605725169181824,
+          "sigma": 2034.2802734375,
+          "sigma0": 0.02224421501159668
+        },
+        {
+          "trial": 5,
+          "conditional_rejection": 0.07,
+          "epsilon": -0.2546619474887848,
+          "sigma": 2136.95361328125,
+          "sigma0": 0.0416877456009388
+        },
+        {
+          "trial": 6,
+          "conditional_rejection": 0.0,
+          "epsilon": -0.42252886295318604,
+          "sigma": 2123.108642578125,
+          "sigma0": 0.058846645057201385
+        },
+        {
+          "trial": 7,
+          "conditional_rejection": 0.61,
+          "epsilon": -0.49836504459381104,
+          "sigma": 2145.574951171875,
+          "sigma0": 0.07521849125623703
+        },
+        {
+          "trial": 8,
+          "conditional_rejection": 0.0,
+          "epsilon": -0.17516669631004333,
+          "sigma": 2038.3824462890625,
+          "sigma0": 0.028564345091581345
+        },
+        {
+          "trial": 9,
+          "conditional_rejection": 1.0,
+          "epsilon": 0.29243117570877075,
+          "sigma": 2105.765380859375,
+          "sigma0": 0.059675395488739014
+        }
+      ]
+    }
+  }
+}
