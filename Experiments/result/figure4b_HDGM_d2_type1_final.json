@@ -1,0 +1,94 @@
+{
+  "experiment": "Tian et al. Figure 4(b) reproduction",
+  "dataset": "HDGM-S",
+  "null": "P = Q",
+  "dimension": 2,
+  "nominal_alpha": 0.05,
+  "paper_N": [
+    1000,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "internal_m": [
+    125,
+    250,
+    500,
+    750,
+    1000,
+    1250
+  ],
+  "sample_accounting": "For the HDGM sampler, n_train=n_test=m and the two-component construction gives paper N=8*m.",
+  "n_trials": 100,
+  "methods": {
+    "C2ST": [
+      0.02,
+      0.03,
+      0.05,
+      0.01,
+      0.04,
+      0.03
+    ],
+    "C2ST-L": [
+      0.03,
+      0.05,
+      0.05,
+      0.04,
+      0.04,
+      0.08
+    ],
+    "MMD-D": [
+      0.07869999999999999,
+      0.0496,
+      0.07120000000000001,
+      0.043500000000000004,
+      0.07350000000000001,
+      0.035
+    ],
+    "MMD-FUSE": [
+      0.07,
+      0.05,
+      0.03,
+      0.06,
+      0.04,
+      0.03
+    ],
+    "RL-C2ST": [
+      0.05,
+      0.03,
+      0.08,
+      0.05,
+      0.08,
+      0.06
+    ],
+    "RL-C2ST-L": [
+      0.05,
+      0.06,
+      0.07,
+      0.05,
+      0.05,
+      0.07
+    ],
+    "RL-MMD-D": [
+      0.07709999999999999,
+      0.0526,
+      0.0473,
+      0.0553,
+      0.07690000000000001,
+      0.0604
+    ]
+  },
+  "source_files": {
+    "C2ST/C2ST-L": "result/c2st_HDGM_d2_type1.json",
+    "MMD-D": "result/mmd_d_HDGM_d2_type1.json",
+    "MMD-FUSE": "result/mmdfuse_HDGM_type1_authorstyle_nfix.json",
+    "RL-C2ST/RL-C2ST-L": "result/c2st_semi_HDGM_d2_type1.json",
+    "RL-MMD-D": "result/rl_mmd_d_HDGM_lrfix_d2_type1.json"
+  },
+  "notes": {
+    "MMD-FUSE": "Final forensic author-style reconstruction with the sample-size bug corrected.",
+    "RL-MMD-D": "Uses lr_mmd=5e-6, the same independently selected learning rate used for the final HDGM power reproduction."
+  }
+}
