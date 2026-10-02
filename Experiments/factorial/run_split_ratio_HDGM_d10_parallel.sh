@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-set -u
+
+# Avoid conda deactivate scripts crashing on unset variables.
+set +u
 
 ROOT="/system/user/publicwork/mbhaskar/A-Unified-Data-Representation-Learning-for-Non-parametric-Two-sample-Testing/Experiments"
 
@@ -21,69 +23,111 @@ nvidia-smi --query-gpu=index,name,memory.used,memory.free,utilization.gpu \
   --format=csv,noheader
 echo "============================================================"
 
-declare -a PIDS=()
 
-run_cell () {
-    TRAIN="$1"
-    TEST="$2"
-    GPU="$3"
-    LABEL="${TRAIN}_${TEST}"
-    LOG="output/sensitivity_split_ratio/${LABEL}.log"
-
-    echo "Launching ${LABEL} on physical GPU ${GPU}"
-    echo "Log: ${LOG}"
-
-    CUDA_VISIBLE_DEVICES="${GPU}" \
-    PYTHONUNBUFFERED=1 \
-    python -u factorial/factorial_split_ratio_HDGM_d10_cell.py \
-        --n-train "${TRAIN}" \
-        --n-test "${TEST}" \
-        > "${LOG}" 2>&1 &
-
-    PIDS+=("$!")
-}
-
-# Existing 300/700 result is preserved; run only the four missing cells.
-run_cell 400 600 0
-run_cell 500 500 1
-run_cell 600 400 2
-run_cell 700 300 3
+###############################################################################
+# BATCH 1
+###############################################################################
 
 echo
-echo "PIDs: ${PIDS[*]}"
-echo "All four cells launched."
-echo
+echo "===== BATCH 1 ====="
+echo "400/600 -> GPU 2"
+echo "500/500 -> GPU 3"
 
-FAILED=0
+CUDA_VISIBLE_DEVICES=2 \
+PYTHONUNBUFFERED=1 \
+python -u factorial/factorial_split_ratio_HDGM_d10_cell.py \
+    --n-train 400 \
+    --n-test 600 \
+    > output/sensitivity_split_ratio/400_600.log 2>&1 &
 
-for PID in "${PIDS[@]}"; do
-    if ! wait "${PID}"; then
-        echo "WARNING: process ${PID} failed."
-        FAILED=1
-    fi
-done
+PID1=$!
 
-echo
-echo "All child processes finished at $(date)."
+CUDA_VISIBLE_DEVICES=3 \
+PYTHONUNBUFFERED=1 \
+python -u factorial/factorial_split_ratio_HDGM_d10_cell.py \
+    --n-train 500 \
+    --n-test 500 \
+    > output/sensitivity_split_ratio/500_500.log 2>&1 &
 
-if [ "${FAILED}" -eq 0 ]; then
-    echo
-    echo "Merging cells..."
-    python factorial/merge_split_ratio_HDGM_d10.py \
-        | tee output/sensitivity_split_ratio/merged_summary.log
+PID2=$!
 
-    echo
-    echo "===== FINAL JSON ====="
-    cat result/factorial_split_ratio_HDGM_d10_N4000.json
-else
-    echo
-    echo "At least one split failed."
-    echo "No merge attempted."
-    echo "Inspect output/sensitivity_split_ratio/*.log"
+echo "PIDs: $PID1 $PID2"
+
+wait "$PID1"
+STATUS1=$?
+
+wait "$PID2"
+STATUS2=$?
+
+echo "Batch 1 exit codes: $STATUS1 $STATUS2"
+
+if [ "$STATUS1" -ne 0 ] || [ "$STATUS2" -ne 0 ]; then
+    echo "ERROR: Batch 1 failed."
+    echo "Inspect:"
+    echo "  output/sensitivity_split_ratio/400_600.log"
+    echo "  output/sensitivity_split_ratio/500_500.log"
+    exit 1
 fi
 
+
+###############################################################################
+# BATCH 2
+###############################################################################
+
 echo
-echo "===== FINAL GIT STATUS ====="
-git status --short
+echo "===== BATCH 2 ====="
+echo "600/400 -> GPU 2"
+echo "700/300 -> GPU 3"
+
+CUDA_VISIBLE_DEVICES=2 \
+PYTHONUNBUFFERED=1 \
+python -u factorial/factorial_split_ratio_HDGM_d10_cell.py \
+    --n-train 600 \
+    --n-test 400 \
+    > output/sensitivity_split_ratio/600_400.log 2>&1 &
+
+PID3=$!
+
+CUDA_VISIBLE_DEVICES=3 \
+PYTHONUNBUFFERED=1 \
+python -u factorial/factorial_split_ratio_HDGM_d10_cell.py \
+    --n-train 700 \
+    --n-test 300 \
+    > output/sensitivity_split_ratio/700_300.log 2>&1 &
+
+PID4=$!
+
+echo "PIDs: $PID3 $PID4"
+
+wait "$PID3"
+STATUS3=$?
+
+wait "$PID4"
+STATUS4=$?
+
+echo "Batch 2 exit codes: $STATUS3 $STATUS4"
+
+if [ "$STATUS3" -ne 0 ] || [ "$STATUS4" -ne 0 ]; then
+    echo "ERROR: Batch 2 failed."
+    echo "Inspect:"
+    echo "  output/sensitivity_split_ratio/600_400.log"
+    echo "  output/sensitivity_split_ratio/700_300.log"
+    exit 1
+fi
+
+
+###############################################################################
+# MERGE
+###############################################################################
+
 echo
-echo "Overnight split-ratio runner finished."
+echo "===== MERGING ====="
+
+python factorial/merge_split_ratio_HDGM_d10.py \
+  | tee output/sensitivity_split_ratio/merged_summary.log
+
+echo
+echo "===== COMPLETE ====="
+echo "Finished: $(date)"
+echo
+cat result/factorial_split_ratio_HDGM_d10_N4000.json

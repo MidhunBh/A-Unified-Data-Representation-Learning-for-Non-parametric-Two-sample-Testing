@@ -1,5 +1,6 @@
 {
-  "commit": "unknown",
+  "schema_version": 2,
+  "commit": "b70855c",
   "factor": "data_splitting (train/test ratio)",
   "levels_planned": [
     "300_700",
@@ -9,14 +10,23 @@
     "700_300"
   ],
   "levels_completed": [
-    "300_700"
+    "300_700",
+    "400_600",
+    "500_500",
+    "600_400",
+    "700_300"
   ],
   "dataset": "HDGM",
   "level": "hard",
   "d": 10,
   "total_budget": 1000,
   "N_TRAIL": 100,
-  "note": "Factorial study, factor 3: data splitting ratio. Total budget (n_train+n_test) fixed at 1000, matching N=4000's 50/50 point already in hand from the latent-dim study. Tests the tradeoff the paper's own introduction names: more training data helps the discriminator but shrinks the held-out test set.",
+  "AE_EPOCHS": 2000,
+  "N_EPOCH": 1000,
+  "N_PER": 100,
+  "encoder_phase2": "frozen",
+  "implementation_note": "300_700 is retained from the original runner. The remaining cells use the corrected runner that removes a redundant outer N_TEST=100 loop. TST_C2ST/TST_LCE already perform N_PER=100 deterministic permutations internally, so the legacy outer loop duplicated the same decision and did not change each outer-trial result.",
+  "note": "Fixed-budget sensitivity study. n_train+n_test=1000 (paper total N=4000 under this HDGM sampling convention). Tests the statistical tradeoff between fitting the learned test statistic and retaining observations for independent testing.",
   "results": [
     {
       "split": "300_700",
@@ -26,7 +36,43 @@
       "power_L": 0.66,
       "type1_S": 0.08,
       "type1_L": 0.03
+    },
+    {
+      "split": "400_600",
+      "n_train": 400,
+      "n_test": 600,
+      "power_S": 0.48,
+      "power_L": 0.63,
+      "type1_S": 0.05,
+      "type1_L": 0.06
+    },
+    {
+      "split": "500_500",
+      "n_train": 500,
+      "n_test": 500,
+      "power_S": 0.5,
+      "power_L": 0.72,
+      "type1_S": 0.09,
+      "type1_L": 0.04
+    },
+    {
+      "split": "600_400",
+      "n_train": 600,
+      "n_test": 400,
+      "power_S": 0.42,
+      "power_L": 0.71,
+      "type1_S": 0.07,
+      "type1_L": 0.1
+    },
+    {
+      "split": "700_300",
+      "n_train": 700,
+      "n_test": 300,
+      "power_S": 0.33,
+      "power_L": 0.54,
+      "type1_S": 0.04,
+      "type1_L": 0.02
     }
   ],
-  "ts": "2026-09-01 15:53"
+  "ts": "2026-10-02 03:05:42"
 }
