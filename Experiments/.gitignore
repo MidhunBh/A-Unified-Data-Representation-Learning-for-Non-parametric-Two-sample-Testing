@@ -1,6 +1,19 @@
-
-data/*.pckl
-
-data/*.npy
-data/*.npz
+# Python
 __pycache__/
+*.py[cod]
+
+# Local datasets / generated dataset arrays
+# Dataset files are kept locally on the compute workspace, not in Git.
+/data/*.pckl
+/data/*.pkl
+/data/*.npy
+/data/*.npz
+/data/mnist/
+
+# Notebook transient files
+.ipynb_checkpoints/
+
+# Local temporary files
+*.tmp
+*.swp
+*~
