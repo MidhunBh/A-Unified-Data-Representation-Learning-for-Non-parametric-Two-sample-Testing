@@ -162,3 +162,14 @@ cython_debug/
 /data
 
 /result
+# Research workspace / cluster-specific files
+
+# Local editor state
+/.vscode/
+
+# New scheduler logs are local by default.
+# Historically useful logs already tracked by Git remain tracked.
+# A scientifically important new log can still be added deliberately with:
+#   git add -f output/<job>.out
+/output/*.out
+/output/*.err
