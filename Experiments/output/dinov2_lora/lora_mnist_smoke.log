@@ -1,0 +1,74 @@
+======================================================================
+DINOv2 LoRA MNIST ENGINEERING / TIMING SMOKE
+======================================================================
+device: cuda:0
+GPU: NVIDIA A100-PCIE-40GB
+git: 6bc4e9c
+m: 5
+rank: 4
+alpha: 4.0
+dropout: 0.0
+epochs: 300
+adapter lr: 0.0001
+head lr: 0.002
+
+fake conversion: [-1,1] -> [0,1]
+
+===== BUILD alternative-real-vs-fake MODEL =====
+Using cache found in /system/user/mbhaskar/.cache/torch/hub/facebookresearch_dinov2_7764ea0f912e53c92e82eb78a2a1631e92725fc8
+/system/user/mbhaskar/.cache/torch/hub/facebookresearch_dinov2_7764ea0f912e53c92e82eb78a2a1631e92725fc8/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/system/user/mbhaskar/.cache/torch/hub/facebookresearch_dinov2_7764ea0f912e53c92e82eb78a2a1631e92725fc8/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/system/user/mbhaskar/.cache/torch/hub/facebookresearch_dinov2_7764ea0f912e53c92e82eb78a2a1631e92725fc8/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+LoRA targets: 12
+initial frozen-vs-LoRA max abs diff: 0.0
+trainable LoRA parameters: 73728
+trainable head parameters: 14402
+total trainable: 88130
+first-step LoRA gradient norm: 0.4630133341959079
+alternative-real-vs-fake epoch   1/300: loss=0.778889
+alternative-real-vs-fake epoch  50/300: loss=0.000000
+alternative-real-vs-fake epoch 100/300: loss=0.000000
+alternative-real-vs-fake epoch 150/300: loss=0.000000
+alternative-real-vs-fake epoch 200/300: loss=0.000000
+alternative-real-vs-fake epoch 250/300: loss=0.000000
+alternative-real-vs-fake epoch 300/300: loss=0.000000
+changed adapter tensors: 24 / 24
+changed original backbone tensors: 0
+Using cache found in /system/user/mbhaskar/.cache/torch/hub/facebookresearch_dinov2_7764ea0f912e53c92e82eb78a2a1631e92725fc8
+save/reload max logits diff: 0.0
+
+===== BUILD null-real-vs-real MODEL =====
+Using cache found in /system/user/mbhaskar/.cache/torch/hub/facebookresearch_dinov2_7764ea0f912e53c92e82eb78a2a1631e92725fc8
+LoRA targets: 12
+initial frozen-vs-LoRA max abs diff: 0.0
+trainable LoRA parameters: 73728
+trainable head parameters: 14402
+total trainable: 88130
+first-step LoRA gradient norm: 0.2488283405801754
+null-real-vs-real epoch   1/300: loss=0.750892
+null-real-vs-real epoch  50/300: loss=0.000079
+null-real-vs-real epoch 100/300: loss=0.000003
+null-real-vs-real epoch 150/300: loss=0.000003
+null-real-vs-real epoch 200/300: loss=0.000002
+null-real-vs-real epoch 250/300: loss=0.000002
+null-real-vs-real epoch 300/300: loss=0.000002
+changed adapter tensors: 24 / 24
+changed original backbone tensors: 0
+Using cache found in /system/user/mbhaskar/.cache/torch/hub/facebookresearch_dinov2_7764ea0f912e53c92e82eb78a2a1631e92725fc8
+save/reload max logits diff: 0.0
+
+======================================================================
+SMOKE COMPLETE
+======================================================================
+alternative train/test acc: 1.0 1.0
+alternative p S/L: 0.007936507936507936 0.007936507936507936
+null train/test acc: 1.0 0.5
+null p S/L: 1.0 0.5793650793650794
+alternative LoRA training minutes: 0.13447360197703043
+null LoRA training minutes: 0.13046720027923583
+total smoke minutes: 0.3132148067156474
+result: result/dinov2_lora_mnist_smoke.json
+DONE
