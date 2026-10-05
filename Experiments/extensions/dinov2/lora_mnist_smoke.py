@@ -150,11 +150,25 @@ class LoRALinear(nn.Module):
         self.scaling = alpha / rank
         self.dropout = nn.Dropout(dropout)
 
+        # Create LoRA factors directly beside the pretrained matrix.
+        # The DINO backbone is already on CUDA when adapters are injected,
+        # so inheriting device/dtype avoids CPU-vs-CUDA mismatches during
+        # the zero-update equivalence check.
         self.lora_A = nn.Parameter(
-            torch.empty(rank, base.in_features)
+            torch.empty(
+                rank,
+                base.in_features,
+                device=base.weight.device,
+                dtype=base.weight.dtype,
+            )
         )
         self.lora_B = nn.Parameter(
-            torch.zeros(base.out_features, rank)
+            torch.zeros(
+                base.out_features,
+                rank,
+                device=base.weight.device,
+                dtype=base.weight.dtype,
+            )
         )
 
         nn.init.kaiming_uniform_(
