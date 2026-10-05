@@ -17,3 +17,6 @@ __pycache__/
 *.tmp
 *.swp
 *~
+
+# Local frozen DINOv2 embedding caches
+/data/dinov2_*.pt
