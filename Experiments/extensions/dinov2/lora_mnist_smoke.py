@@ -462,11 +462,16 @@ def build_lora_model(check_initial_batch=None):
 
 
 def fit_one(p_tr, p_te, q_tr, q_te, label):
-    xtr_raw = torch.cat([p_tr, q_tr], dim=0)
-    xte_raw = torch.cat([p_te, q_te], dim=0)
+    # Real MNIST is 28x28 while the retained fake-MNIST pool is 32x32.
+    # Preprocess each source separately to the common DINO 224x224
+    # representation before concatenating them.
+    p_tr = preprocess(p_tr)
+    q_tr = preprocess(q_tr)
+    p_te = preprocess(p_te)
+    q_te = preprocess(q_te)
 
-    xtr = preprocess(xtr_raw)
-    xte = preprocess(xte_raw)
+    xtr = torch.cat([p_tr, q_tr], dim=0)
+    xte = torch.cat([p_te, q_te], dim=0)
 
     ytr = torch.cat([
         torch.zeros(M),
