@@ -5,6 +5,13 @@ import pickle
 import itertools
 import subprocess
 from pathlib import Path
+import sys
+
+# Allow this runner, located under Experiments/extensions/dinov2/,
+# to import the shared Experiments/utils.py without modifying utils.py.
+EXPERIMENTS_ROOT = Path(__file__).resolve().parents[2]
+if str(EXPERIMENTS_ROOT) not in sys.path:
+    sys.path.insert(0, str(EXPERIMENTS_ROOT))
 
 import numpy as np
 import torch
